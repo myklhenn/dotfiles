@@ -1,0 +1,31 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+  //----MACOS----
+  { 
+    "key": "cmd+shift+enter",
+    "command":"editor.emmet.action.wrapWithAbbreviation",
+    "when": "editorTextFocus && !editorReadonly"
+  }
+  // ----LINUX----
+  // },{
+  //   "key": "ctrl+shift+enter", 
+  //   "command":"editor.emmet.action.wrapWithAbbreviation", 
+  //   "when": "editorTextFocus && !editorReadonly" 
+  // },{ 
+  //   "key": "alt+left", 
+  //   "command": "cursorHome", 
+  //   "when": "editorTextFocus" 
+  // },{ 
+  //   "key": "alt+right", 
+  //   "command": "cursorEnd", 
+  //   "when": "editorTextFocus" 
+  // },{ 
+  //   "key": "ctrl+shift+up",
+  //   "command": "editor.action.copyLinesUpAction",
+  //   "when": "editorTextFocus"
+  // },{
+  //   "key": "ctrl+shift+down",
+  //   "command": "editor.action.copyLinesDownAction",
+  //   "when": "editorTextFocus"
+  // }
+]

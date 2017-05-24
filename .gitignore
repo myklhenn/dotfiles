@@ -1,0 +1,20 @@
+# vscode workspace storage files
+code/User.symlink/workspaceStorage/*
+
+# fish shell universal variable files
+fishd.*
+
+# fisherman (fish plugin manager) files
+fishfile
+fish/fish.symlink/completions
+fish/fish.symlink/conf.d
+fish/fish.symlink/functions/*.fish
+# (but do include the actual function)
+!fish/fish.symlink/functions/fisher.fish
+
+# vim/netrw history file
+.netrwhist
+
+# macOS Directory Service Store files
+.DS_Store
+._*
