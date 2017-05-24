@@ -5,7 +5,7 @@
 function use_color; isatty stdout; and set_color $argv[1]; end
 function lgn; if test -n "$RELOADING"; echo $argv[1]; end; end
 function lg; if test -n "$RELOADING"; echo -n $argv[1]; end; end
-function INFO; use_color bryellow; lg "    "$argv[1]; lgn; use_color normal; end 
+function INFO; use_color yellow; lg "    "$argv[1]; lgn; use_color normal; end 
 function NAME; use_color cyan; lg $argv[1]" "; use_color normal; end
 
 #####
@@ -18,6 +18,7 @@ set -x EDITOR (if test (which nvim); echo nvim; else; echo vim; end)
 set -x GREP_COLOR "1;37;45"
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
+# set -x LD_LIBRARY_PATH $LD_LIBRARY_PATH /home/henninm3/.local/lib
 # highlighting for less / man pages
 set -x LESS_TERMCAP_mb (echo -e '\e[01;31m') # mode-blinking -- red
 set -x LESS_TERMCAP_md (echo -e '\e[01;32m') # mode-doublebright -- bold, green
@@ -41,8 +42,18 @@ switch (uname)
         set paths $paths (cat ~/.config/fish/functions/macos/paths.fish)
     case Linux
         INFO "found linux"
-        set srcs $srcs ~/.config/fish/functions/linux
-        set paths $paths (cat ~/.config/fish/functions/linux/paths.fish)
+        # set srcs $srcs ~/.config/fish/functions/linux
+        # set paths $paths (cat ~/.config/fish/functions/linux/paths.fish)
+end
+
+if test (whoami) = "henninm3"
+    INFO "found wwu"
+    set srcs $srcs ~/.config/fish/functions/wwu
+    set paths $paths (cat ~/.config/fish/functions/wwu/paths.fish)
+ 
+    # map caps lock key to escape
+    xmodmap -e "clear Lock" 2>/dev/null
+    xmodmap -e "keysym Caps_Lock = Escape" 2>/dev/null
 end
 
 if test -n (which git)

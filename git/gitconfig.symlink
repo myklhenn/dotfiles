@@ -2,9 +2,7 @@
 	name = Michael Henning
 	email = mykl951@gmail.com
 [core]
-	editor = nvim
-	; ---LINUX---
-	; editor = vim
+	editor = vim
 [web]
 	browser = google-chrome
 [color]
