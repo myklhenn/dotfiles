@@ -1,6 +1,10 @@
 # vscode workspace storage files
 code/User.symlink/workspaceStorage/*
 
+# vscode keybindings and settings file (symlinked on local machine)
+keybindings.json
+settings.json
+
 # fish shell universal variable files
 fishd.*
 

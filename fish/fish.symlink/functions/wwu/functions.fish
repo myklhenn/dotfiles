@@ -1,4 +1,4 @@
-# fish shell functions sourced when running linux
+# fish shell functions sourced when running linux on a WWU lab machine
 
 # open file in Visual Studio Code when installed in home directory
 NAME "code"; function code

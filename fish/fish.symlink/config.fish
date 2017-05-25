@@ -35,18 +35,15 @@ lgn "done"
 
 lgn "checking platform(s):"
 
-switch (uname)
-    case Darwin 
-        INFO "found macos"
-        set srcs $srcs ~/.config/fish/functions/macos
-        set paths $paths (cat ~/.config/fish/functions/macos/paths.fish)
-    case Linux
-        INFO "found linux"
-        # set srcs $srcs ~/.config/fish/functions/linux
-        # set paths $paths (cat ~/.config/fish/functions/linux/paths.fish)
-end
-
-if test (whoami) = "henninm3"
+if test (uname) = "Darwin"
+    INFO "found macos"
+    set srcs $srcs ~/.config/fish/functions/macos
+    set paths $paths (cat ~/.config/fish/functions/macos/paths.fish)
+else if test (uname) = "Linux"
+    INFO "found linux"
+    set srcs $srcs ~/.config/fish/functions/linux
+    set paths $paths (cat ~/.config/fish/functions/linux/paths.fish)
+else if test (whoami) = "henninm3"
     INFO "found wwu"
     set srcs $srcs ~/.config/fish/functions/wwu
     set paths $paths (cat ~/.config/fish/functions/wwu/paths.fish)

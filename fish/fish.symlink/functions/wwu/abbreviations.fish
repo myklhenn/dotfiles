@@ -1,7 +1,9 @@
-# fish shell abbreviations sourced when running linux
+# fish shell abbreviations sourced when running linux on a WWU lab machine
 
-#NAME "dpi"; abbr --add dpi "gsettings set org.gnome.desktop.interface scaling-factor"
-NAME "n"; abbr --add n "vim"
-NAME "nv"; abbr --add nv "vim"
-NAME "nvi"; abbr --add nvi "vim"
-NAME "nvim"; abbr --add nvi "vim"
+NAME "n"    ; abbr --add n    "vim"
+NAME "nv"   ; abbr --add nv   "vim"
+NAME "nvi"  ; abbr --add nvi  "vim"
+NAME "nvim" ; abbr --add nvim "vim"
+NAME "v"    ; abbr --add v    "vim"
+NAME "vi"   ; abbr --add vi   "vim"
+NAME "vim"  ; abbr --add vim  "vim"
