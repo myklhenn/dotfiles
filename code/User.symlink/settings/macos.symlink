@@ -1,0 +1,27 @@
+// Place your settings in this file to overwrite the default settings
+{
+   "editor.cursorBlinking": "blink",
+   "editor.fontFamily": "Fira Code",
+   "editor.fontLigatures": true,
+   "editor.fontSize": 14,
+   "editor.formatOnType": true,
+   "editor.lineHeight": 20,
+   "editor.renderIndentGuides": true,
+   "editor.renderLineHighlight": "all",
+   "editor.rulers": [ 80 ],
+   "editor.tabSize": 3,
+   "editor.wordWrap": "on",
+   "files.hotExit": "onExit",
+   "terminal.integrated.fontFamily": "Fira Code",
+   "terminal.integrated.fontSize": 14,
+   "terminal.integrated.lineHeight": 1.3,
+   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+   "terminal.external.osxExec": "iTerm.app",
+   "window.zoomLevel": 0,
+   "workbench.activityBar.visible": true,
+   "workbench.colorTheme": "Monokai",
+   "workbench.editor.showIcons": true,
+   "workbench.iconTheme": "vs-nomo-dark",
+   "workbench.sideBar.location": "left",
+   "workbench.statusBar.visible": true
+}

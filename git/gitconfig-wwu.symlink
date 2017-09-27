@@ -1,10 +1,10 @@
 [user]
 	name = Michael Henning
-	email = mykl951@gmail.com
+	email = henninm3@wwu.edu
 [core]
-	editor = nvim
+	editor = vim
 [web]
-	browser = google-chrome
+	browser = chromium
 [color]
 	ui = auto
 [github]
