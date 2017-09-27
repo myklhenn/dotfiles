@@ -5,6 +5,16 @@ NAME "code"; function code
     ~/.local/bin/code/bin/code $argv
 end
 
+# open file in Atom Beta when installed in home directory
+NAME "atom-beta"; function atom-beta
+    ~/.local/bin/atom/atom $argv
+end
+
+# run Atom Package Manager when installed in home directory
+NAME "apm-beta"; function apm-beta
+    ~/.local/bin/atom/resources/app/apm/bin/apm $argv
+end
+
 # allow execution of fish shell scripts when installed in home directory
 NAME "fish"; function fish
     ~/.local/bin/fish $argv
