@@ -2,16 +2,18 @@ function fish_prompt
 
 	# print username, hostname, working directory
 	set -l prevstatus $status
-	set -l pwd (prompt_pwd)
 	set -l user (whoami)
 	#set -l host (string replace ".local" "" (hostname))
 	set -l host (if test (uname) = "Darwin"; scutil --get LocalHostName; else; hostname; end)
+	set -l pwdcolor (if test $user = "root"; echo -ns "red"; else; echo -ns "green"; end)
+	set -l pwd (prompt_pwd)
+
 	switch $prevstatus
 		case 0
 			set_color blue; echo -ns $user
 			set_color normal; echo -ns "@"
 			set_color purple; echo -ns $host
-			set_color green; echo -ns " $pwd "
+			set_color $pwdcolor; echo -ns " $pwd "
 		case '*'
 			set_color red
 			echo -ns "$user@$host $pwd "
@@ -43,7 +45,12 @@ function fish_prompt
 		echo -ns "($job_count)"
 	end
 
-	echo -ns "\$ "
+    # print prompt symbol (end of prompt)
+    if test $user = "root"
+        echo -ns "# "
+    else
+        echo -ns "\$ "
+    end
 end
 
 function fish_mode_prompt
@@ -53,13 +60,13 @@ function fish_mode_prompt
         set_color normal; echo -ns '-'
         switch $fish_bind_mode
             case default
-                set_color red 
+                set_color red
                 echo 'N'
             case insert
                 set_color green
                 echo 'I'
             case replace-one
-                set_color green 
+                set_color green
                 echo 'R'
             case visual
                 set_color magenta

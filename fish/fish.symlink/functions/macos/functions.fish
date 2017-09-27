@@ -1,6 +1,6 @@
 # fish shell functions sourced when running macOS
 
-# reveal given directory in finder 
+# reveal given directory in finder
 NAME "finder"; function finder
   open -R $argv
 end
@@ -31,8 +31,15 @@ NAME "funced-macos"; function funced-macos
   eval $EDITOR ~/.config/fish/functions/macos/functions.fish
 end
 
-# SUMMER 2017 COURSE FOLDER ALIASES:
-NAME "460"; function 460
-  cd ~/OneDrive/School/Western\ Washington\ University/2016-17\ Q4\ \(Summer\)/\[1200\]\ CSCI\ 460
+# FALL 2017 COURSE FOLDER ALIASES:
+NAME "342"; function 342
+cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q1\ \(Fall\)/\[1000\]\ CSCI\ 342/
 end
 
+NAME "412"; function 412
+  cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q1\ \(Fall\)/\[0900\]\ CSCI\ 412/
+end
+
+NAME "492"; function 492
+  cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q1\ \(Fall\)/\[1500\]\ CSCI\ 492/
+end

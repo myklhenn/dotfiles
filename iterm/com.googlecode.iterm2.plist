@@ -10,6 +10,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Monokai</key>
@@ -693,6 +695,8 @@
 	<string>C155D186-614E-4056-B17B-EB1A82295E10</string>
 	<key>HideScrollbar</key>
 	<true/>
+	<key>HotkeyMigratedFromSingleToMulti</key>
+	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSFontPanelAttributes</key>
@@ -744,17 +748,17 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>135 187 446 214 0 0 1280 778 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>330 301 620 392 0 0 1280 778 </string>
+	<string>330 300 620 392 0 0 1280 778 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1280 778 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>299 102 918 512 0 0 1280 778 </string>
+	<string>299 118 918 495 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>315 174 650 477 0 0 1280 778 </string>
+	<string>453 84 650 477 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>628 178 650 477 0 0 1280 778 </string>
+	<string>630 301 650 477 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>74 1142 1066 801 -658 800 2560 1418 </string>
+	<string>148 61 650 387 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>827 809 1066 801 -658 800 2560 1418 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -2248,7 +2252,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-06-06T00:19:00Z</date>
+	<date>2017-09-25T20:27:19Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>TabStyle</key>
@@ -2256,7 +2260,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.0.15</string>
+	<string>3.1.2</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

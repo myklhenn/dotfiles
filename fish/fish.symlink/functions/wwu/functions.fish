@@ -23,19 +23,15 @@ NAME "funced-wwu"; function funced-wwu
   eval $EDITOR ~/.config/fish/functions/wwu/functions.fish
 end
 
-# SPRING 2017 COURSE FOLDER ALIASES:
-NAME "345"; function 345
-  cd ~/Documents/CSCI345
+# FALL 2017 COURSE FOLDER ALIASES:
+NAME "342"; function 342
+  cd ~/Documents/CSCI342
 end
 
-NAME "367"; function 367
-  cd ~/Documents/CSCI367
+NAME "412"; function 412
+  cd ~/Documents/CSCI412
 end
 
-NAME "403"; function 403
-  cd ~/Documents/CSCI403
-end
-
-NAME "491"; function 491
-  cd ~/Documents/CSCI491
+NAME "492"; function 492
+  cd ~/Documents/CSCI492
 end

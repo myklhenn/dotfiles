@@ -5,6 +5,9 @@ code/User.symlink/workspaceStorage/*
 keybindings.json
 settings.json
 
+# neovim/vim init file (symlinked on local machine)
+init.vim
+
 # fish shell universal variable files
 fishd.*
 
