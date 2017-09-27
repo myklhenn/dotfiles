@@ -5,7 +5,7 @@ code/User.symlink/workspaceStorage/*
 keybindings.json
 settings.json
 
-# neovim/vim init file (symlinked on local machine)
+# [neo]vim init file (symlinked on local machine)
 init.vim
 
 # fish shell universal variable files
@@ -21,6 +21,9 @@ fish/fish.symlink/functions/*.fish
 
 # vim/netrw history file
 .netrwhist
+
+# vimplug plugin folder
+nvim/nvim.symlink/plugged
 
 # macOS Directory Service Store files
 .DS_Store

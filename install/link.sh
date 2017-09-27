@@ -28,16 +28,16 @@ esac
 if [ $(whoami) = "henninm3" ]; then
    # global gitconfig file
    ln -sfv $DOTDIR/git/gitconfig-wwu.symlink ~/.gitconfig
-   # vim/neovim init file
+   # [neo]vim init file
    ln -sfv $DOTDIR/nvim/nvim.symlink/init/init-wwu.symlink $DOTDIR/nvim/nvim.symlink/init.vim
-   # vim/neovim config directory
+   # [neo]vim config directory
    ln -sfv $DOTDIR/nvim/nvim.symlink ~/.vim
 else
    # global gitconfig file
    ln -sfv $DOTDIR/git/gitconfig.symlink ~/.gitconfig
-   # vim/neovim init file
+   # [neo]vim init file
    ln -sfv $DOTDIR/nvim/nvim.symlink/init/init.symlink $DOTDIR/nvim/nvim.symlink/init.vim
-   # vim/neovim config directory
+   # [neo]vim config directory
    ln -sfv $DOTDIR/nvim/nvim.symlink ~/.config/nvim
    # vi file manager config directory
    ln -sfv $DOTDIR/vifm/vifm.symlink ~/.config/vifm
