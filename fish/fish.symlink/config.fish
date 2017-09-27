@@ -39,10 +39,6 @@ if test (uname) = "Darwin"
     INFO "found macos"
     set srcs $srcs ~/.config/fish/functions/macos
     set paths $paths (cat ~/.config/fish/functions/macos/paths.fish)
-else if test (uname) = "Linux"
-    INFO "found linux"
-    set srcs $srcs ~/.config/fish/functions/linux
-    set paths $paths (cat ~/.config/fish/functions/linux/paths.fish)
 else if test (whoami) = "henninm3"
     INFO "found wwu"
     set srcs $srcs ~/.config/fish/functions/wwu
@@ -51,6 +47,10 @@ else if test (whoami) = "henninm3"
     # map caps lock key to escape
     xmodmap -e "clear Lock" 2>/dev/null
     xmodmap -e "keysym Caps_Lock = Escape" 2>/dev/null
+else if test (uname) = "Linux"
+    INFO "found linux"
+    set srcs $srcs ~/.config/fish/functions/linux
+    set paths $paths (cat ~/.config/fish/functions/linux/paths.fish)
 end
 
 if test -n (which git)
