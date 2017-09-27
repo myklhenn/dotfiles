@@ -2,7 +2,7 @@
 
 # open file in Visual Studio Code when installed in home directory
 NAME "code"; function code
-    ~/.local/bin/vscode/bin/code $argv
+    ~/.local/bin/code/bin/code $argv
 end
 
 # allow execution of fish shell scripts when installed in home directory
