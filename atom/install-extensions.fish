@@ -10,7 +10,7 @@ eval $apmcmd install file-icons
 eval $apmcmd install highlight-line
 eval $apmcmd install highlight-selected
 eval $apmcmd install ide-cpp
-eval $apmcmd install ide-css-less-scss
+eval $apmcmd install ide-css
 eval $apmcmd install ide-html
 eval $apmcmd install ide-java
 eval $apmcmd install ide-json

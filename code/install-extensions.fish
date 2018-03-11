@@ -9,7 +9,7 @@ code --install-extension patrys.vscode-code-outline
 # Fish shell
 code --install-extension TeddyDD.fish
 # FontSize Shortcuts
-code --install-extension peterjuras.fontsize-shortcuts
+code --install-extension fosshaas.fontsize-shortcuts
 # gitignore
 code --install-extension codezombiech.gitignore
 # IntelliSense for CSS class names

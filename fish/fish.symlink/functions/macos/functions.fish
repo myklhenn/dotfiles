@@ -31,15 +31,16 @@ NAME "funced-macos"; function funced-macos
   eval $EDITOR ~/.config/fish/functions/macos/functions.fish
 end
 
-# FALL 2017 COURSE FOLDER ALIASES:
-NAME "342"; function 342
-cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q1\ \(Fall\)/\[1000\]\ CSCI\ 342/
+# WINTER 2018 COURSE FOLDER ALIASES:
+NAME "405"; function 405
+  cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q2\ \(Winter\)/\[1000\]\ CSCI\ 405/
 end
 
-NAME "412"; function 412
-  cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q1\ \(Fall\)/\[0900\]\ CSCI\ 412/
+NAME "493"; function 493
+  cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q2\ \(Winter\)/\[1500\]\ CSCI\ 493/
 end
 
-NAME "492"; function 492
-  cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q1\ \(Fall\)/\[1500\]\ CSCI\ 492/
+NAME "495"; function 495
+  cd ~/OneDrive/School/Western\ Washington\ University/2017-18\ Q2\ \(Winter\)/\[1600\]\ CSCI\ 495/
 end
+
