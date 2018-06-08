@@ -1,33 +1,16 @@
-# vscode workspace storage files
-code/User.symlink/workspaceStorage/*
-
-# vscode keybindings and settings file (symlinked on local machine)
-keybindings.json
-settings.json
-
-# [neo]vim init file (symlinked on local machine)
-init.vim
-
 # fish shell universal variable files
 fishd.*
-
-# fisherman (fish plugin manager) files
-fishfile
-fish/fish.symlink/completions
-fish/fish.symlink/conf.d
-fish/fish.symlink/functions/*.fish
-# (but do include the actual function)
-!fish/fish.symlink/functions/fisher.fish
 
 # vim/netrw history file
 .netrwhist
 
-# vimplug plugin folder
-nvim/nvim.symlink/plugged
+# vimplug
+common/nvim/.config/nvim/autoload/plug.vim
+common/nvim/.config/nvim/plugged
 
 # vifm state information
-vifm/vifm.symlink/vifminfo
+common/vifm/.config/vifm/vifminfo
 
-# macOS Directory Service Store files
+# macOS files
 .DS_Store
 ._*
