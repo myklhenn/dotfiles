@@ -700,7 +700,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/.dotfiles/iterm</string>
+	<string>~/.dotfiles/macos/iterm/Library/Preferences</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -742,11 +742,11 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1303 491 445 94 0 0 2560 1418 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>330 301 620 392 0 0 1280 778 </string>
+	<string>330 302 620 392 0 0 1280 778 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1221 949 918 401 0 0 2560 1418 </string>
+	<string>484 258 796 486 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>462 495 650 477 0 0 2560 1418 </string>
+	<string>0 54 1280 724 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>630 282 650 477 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -2228,7 +2228,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/myklhenn/.dotfiles/iterm</string>
+	<string>/Users/myklhenn/.dotfiles/macos/iterm/Library/Preferences</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -2242,15 +2242,15 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-02-19T22:36:40Z</date>
+	<date>2018-09-24T20:21:35Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>TabStyle</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.1.5</string>
+	<string>3.2.0</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
