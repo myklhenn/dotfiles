@@ -1,11 +1,8 @@
 # fish shell configuration -- executed upon session start
 
-set fish_greeting # blank greeting
+# (~/.config/fish/conf.d/*.fish is automatically sourced)
 
-# load all setup/configuration files
-for FILE in ~/.config/fish/conf.d/*.fish
-  builtin source $FILE
-end
+set fish_greeting # blank greeting
 
 # launch X server
 # if test (tty) = '/dev/tty1'

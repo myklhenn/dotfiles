@@ -1,7 +1,7 @@
-fisherman/await
-laughedelic/brew-completions
 barnybug/docker-fish-completion
+fisherman/await
 fisherman/fnm
 fisherman/get_file_age
 fisherman/last_job_id
 fisherman/menu
+laughedelic/brew-completions
