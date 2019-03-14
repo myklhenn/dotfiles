@@ -1,3 +1,4 @@
+set termguicolors
 colorscheme monokai
 syntax on
 

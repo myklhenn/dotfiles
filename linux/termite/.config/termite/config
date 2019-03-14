@@ -2,7 +2,7 @@
 allow_bold = true
 clickable_url = true
 dynamic_title = true
-font = Terminus (TTF) 12
+font = TerminusNoAA 12
 scrollback_lines = 4096
 #browser = google-chrome
 
@@ -10,7 +10,7 @@ scrollback_lines = 4096
 background = rgba(39, 40, 34, 0.85)
 foreground = #f8f8f2
 # black
-color0     = #272822    
+color0     = #272822
 color8     = #5f5f5f
 # red
 color1     = #f92672
