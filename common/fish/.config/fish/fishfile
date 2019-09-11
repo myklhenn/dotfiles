@@ -1,7 +1,5 @@
 barnybug/docker-fish-completion
-fisherman/await
-fisherman/fnm
-fisherman/get_file_age
-fisherman/last_job_id
-fisherman/menu
+jethrokuan/fzf
+jorgebucaran/fish-nvm
+jukben/z
 laughedelic/brew-completions

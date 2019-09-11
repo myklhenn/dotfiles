@@ -94,6 +94,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'arakashic/chromatica.nvim'
 Plug 'brooth/far.vim'
+Plug 'lilydjwg/colorizer'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
