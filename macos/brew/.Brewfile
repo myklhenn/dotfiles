@@ -55,6 +55,8 @@ cask "font-ia-writer-duospace"
 cask "font-ia-writer-mono"
 cask "font-ia-writer-quattro"
 cask "font-ibm-plex"
+cask "font-inconsolata"
+cask "font-iosevka"
 cask "font-terminus"
 cask "font-ubuntu"
 cask "freac"
@@ -62,7 +64,7 @@ cask "gitkraken"
 cask "gitup"
 cask "google-chrome"
 cask "iina"
-cask "inkscape"
+# cask "inkscape"
 cask "install-disk-creator"
 # cask "intellij-idea-ce"
 # cask "itch"
@@ -71,7 +73,7 @@ cask "java"
 cask "keep"
 cask "keepingyouawake"
 cask "kid3"
-cask "logitech-myharmony"
+# cask "logitech-myharmony"
 cask "logitech-options"
 cask "logitech-unifying"
 cask "mark-text"
@@ -95,35 +97,37 @@ cask "private-internet-access"
 # cask "pycharm-ce"
 # cask "satellite-eyes"
 cask "scummvm"
-cask "sharemouse"
-cask "silverlight"
+# cask "sharemouse"
+# cask "silverlight"
 cask "sloth"
-cask "spotify"
+# cask "spotify"
 # cask "spotify-notifications"
 cask "steam"
 # cask "syncthing"
 cask "taskexplorer"
 cask "teamviewer"
 cask "transmission"
-cask "tunnelblick"
+# cask "tunnelblick"
 # cask "typora"
+cask "viscosity"
 cask "visual-studio-code"
 cask "vivaldi"
 cask "vmware-fusion"
 cask "wireshark"
-cask "xquartz"
+# cask "xquartz"
 mas "1Password 7", id: 1333542190
+mas "AdGuard for Safari", id: 1440147259
 mas "Airmail", id: 918858936
 mas "ColorSlurp", id: 1287239339
 mas "Deliveries", id: 924726344
 mas "Expressions", id: 913158085
 mas "Gemini 2", id: 1090488118
 mas "Image2icon", id: 992115977
-mas "Install Mac OS X Lion", id: 444303913
-mas "Install OS X El Capitan", id: 1018109117
-mas "Install OS X Mavericks", id: 675248567
-mas "Install OS X Mountain Lion", id: 537386512
-mas "Install OS X Yosemite", id: 915041082
+# mas "Install Mac OS X Lion", id: 444303913
+# mas "Install OS X El Capitan", id: 1018109117
+# mas "Install OS X Mavericks", id: 675248567
+# mas "Install OS X Mountain Lion", id: 537386512
+# mas "Install OS X Yosemite", id: 915041082
 mas "iStat Menus", id: 1319778037
 mas "Just Press Record", id: 979561272
 mas "Keynote", id: 409183694
@@ -132,7 +136,7 @@ mas "Mactracker", id: 430255202
 mas "Magnet", id: 441258766
 mas "MainStage 3", id: 634159523
 mas "Microsoft Excel", id: 462058435
-mas "Microsoft OneNote", id: 784801555
+# mas "Microsoft OneNote", id: 784801555
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
