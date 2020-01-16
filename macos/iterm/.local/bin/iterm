@@ -1,0 +1,27 @@
+#!/bin/bash
+osascript - "$@" <<EOF
+on run argv
+  if application "iTerm" is not running then
+    tell application "iTerm"
+      activate
+      tell current session of current window
+        repeat with arg in argv
+          write text arg
+        end repeat
+      end tell
+    end tell
+  else
+    tell application "iTerm"
+      activate
+      set new_term to (create window with default profile)
+      tell new_term
+        tell the current session
+          repeat with arg in argv
+            write text arg
+          end repeat
+        end tell
+      end tell
+    end tell
+  end if
+end run
+EOF

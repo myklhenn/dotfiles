@@ -9,8 +9,7 @@ end
 
 if test -n "$VI_EDITOR"
   # add abbreviations for launching primary editor
-  set -l ABBRS 'n' 'nv' 'nvi' 'nvim' 'v' 'vi' 'vim'
-  for ABBR in $ABBRS
+  for ABBR in 'n' 'nv' 'nvi' 'nvim' 'v' 'vi' 'vim'
     abbr --add $ABBR $VI_EDITOR
   end
 

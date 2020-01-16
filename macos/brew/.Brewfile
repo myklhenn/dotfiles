@@ -10,8 +10,10 @@ brew "ffmpeg"
 brew "fish"
 brew "fzf"
 brew "git"
+brew "htop"
 brew "icu4c"
 brew "mas"
+brew "neofetch"
 brew "neovim"
 brew "python"
 brew "ranger"
@@ -75,10 +77,11 @@ cask "keepingyouawake"
 cask "kid3"
 # cask "logitech-myharmony"
 cask "logitech-options"
-cask "logitech-unifying"
+# cask "logitech-unifying"
 cask "mark-text"
 cask "marta"
-cask "mkvtoolnix-app"
+cask "middleclick"
+cask "mkvtoolnix"
 # cask "mobile-mouse-server"
 cask "musescore"
 cask "musicbrainz-picard"
@@ -136,11 +139,11 @@ mas "Mactracker", id: 430255202
 mas "Magnet", id: 441258766
 mas "MainStage 3", id: 634159523
 mas "Microsoft Excel", id: 462058435
-# mas "Microsoft OneNote", id: 784801555
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Microsoft Word", id: 462054704
 mas "Numbers", id: 409203825
+mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
 mas "PiPer", id: 1421915518
 mas "Pixelmator Pro", id: 1289583905
@@ -149,5 +152,6 @@ mas "Soulver", id: 413965349
 mas "Speedtest", id: 1153157709
 mas "The Unarchiver", id: 425424353
 mas "Trello", id: 1278508951
+mas "Twitter", id: 1482454543
 mas "WiFi Explorer Lite", id: 1408727408
 mas "Xcode", id: 497799835

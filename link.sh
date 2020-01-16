@@ -1,6 +1,6 @@
 #!/bin/sh
 
-WRK_DIR=$(pwd)/$(dirname "$0")
+WORK_DIR=$(pwd)/$(dirname "$0")
 echo "using platform \"common\""
 PLATFORMS="common"
 
@@ -18,9 +18,12 @@ esac
 echo "creating directories for fish shell"
 mkdir -pv ~/.config/fish/functions ~/.config/fish/conf.d
 
+echo "creating directory for user scripts"
+mkdir -pv ~/.local/bin
+
 for PLATFORM in $PLATFORMS
 do
-  cd "$WRK_DIR"/"$PLATFORM"
+  cd "$WORK_DIR"/"$PLATFORM"
   for PKG_DIR in ./*
   do
     PKG_NAME=$(basename $PKG_DIR)

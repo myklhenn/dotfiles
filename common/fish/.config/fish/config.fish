@@ -1,6 +1,6 @@
 # fish shell configuration -- executed upon session start
 
-# (~/.config/fish/conf.d/*.fish is automatically sourced)
+# (~/.config/fish/conf.d/*.fish is automatically sourced before this file)
 
 set fish_greeting # blank greeting
 
