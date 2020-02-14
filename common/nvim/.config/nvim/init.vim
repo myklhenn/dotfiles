@@ -18,7 +18,9 @@ set completeopt+=longest
 set clipboard=unnamed   " use same clipboard as system
 
 set ttyfast             " faster redrawing
-set diffopt+=vertical
+if has('nvim')
+	set diffopt+=vertical
+endif
 set laststatus=2        " show the status line all the time
 set so=7                " set 7 lines to the cursors - when moving vertical
 
@@ -90,12 +92,19 @@ highlight Comment cterm=italic
 highlight htmlArg cterm=italic
 
 " vim-plug preamble/plugin directory
-call plug#begin('~/.config/nvim/plugged')
+if has('nvim')
+	call plug#begin('~/.config/nvim/plugged')
+else
+	call plug#begin('~/.vim/plugged')
+endif
 
 Plug 'arakashic/chromatica.nvim'
 Plug 'brooth/far.vim'
-Plug 'lilydjwg/colorizer'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+
+if has('nvim')
+	Plug 'lilydjwg/colorizer'
+endif
 
 call plug#end()

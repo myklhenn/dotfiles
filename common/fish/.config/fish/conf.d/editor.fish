@@ -15,11 +15,16 @@ if test -n "$VI_EDITOR"
 
   # install vim-plug and plugins in init.vim/.vimrc on first run
   if test -n "$VIM_PLUG_PATH"; and not test -e "$VIM_PLUG_PATH"
-    echo "vim-plug not found. Installing..."
-    curl -fLo "$VIM_PLUG_PATH" --create-dirs \
-      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    # install plugins non-interactively
-    nvim +'PlugInstall --sync' +qa
+    if not test (which curl)
+        echo "Startup script \"editor.fish\" requires \"curl\" to run."
+        echo "Please install before next shell startup."
+    else
+      echo "vim-plug not found. Installing..."
+      curl -fLo "$VIM_PLUG_PATH" --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      # install plugins non-interactively
+      nvim +'PlugInstall --sync' +qa
+    end
   end
 
   # cleanup
