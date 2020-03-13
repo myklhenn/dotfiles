@@ -60,6 +60,8 @@ DOTFILES_DIR=$(dirname $(realpath $0))
 PLATFORMS=""
 add_platform "common"
 
+uname -r | grep "Microsoft" > /dev/null && add_platform "wsl"
+
 case $(uname) in
 	Darwin) add_platform "macos" ;;
 	Linux) add_platform "linux" ;;
