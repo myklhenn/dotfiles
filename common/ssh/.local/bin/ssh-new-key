@@ -1,0 +1,51 @@
+#!/bin/bash
+
+BC="\033[0;90m" # black color
+YC="\033[0;33m" # yellow color
+NC="\033[0m" # no color
+
+FZF_PROMPT='Select SSH algorithm: '
+ALGOS='ed25519\nrsa'
+KEY_ALGO=`echo -e "$ALGOS" | fzf --height 3 --reverse --prompt "$FZF_PROMPT"`
+[ -z "$KEY_ALGO" ] && exit 1
+echo -e $BC"(KEY_ALGO: \"$KEY_ALGO\")"$NC
+
+read -p "Customize SSH key comment? (y/N): " CUSTOM
+
+KEY_COMMENT=''
+REM_HOST=''
+if [ "$CUSTOM" = "y" ]; then
+    read -p 'Enter custom SSH key comment: ' KEY_COMMENT
+else
+    echo -e $BC'(Using SSH key comment template)'$NC
+    echo -ne "Enter user of remote machine (i.e. \"$YC<user>$NC@host\"): "
+    read REM_USER
+    [ -z "$REM_USER" ] && exit 1
+    echo -ne "Enter hostname of remote machine (i.e. \"user@$YC<host>$NC\"): "
+    read REM_HOST
+    [ -z "$REM_HOST" ] && exit 1
+    KEY_COMMENT="`whoami`@`hostname` -> $REM_USER@$REM_HOST"
+fi
+echo -e $BC"(KEY_COMMENT: \"$KEY_COMMENT\")"$NC
+
+read -p "Create custom SSH key name/path? (y/N): " CUSTOM
+
+KEY_PATH=''
+if [ "$CUSTOM" = "y" ]; then
+    read -p 'Enter custom SSH key name/path: ' KEY_PATH
+    [ -z "$KEY_PATH" ] && exit 1
+else
+    # echo -e $BC'(Using SSH key name template)'$NC
+    # echo -ne "Enter SSH key name prefix (i.e. \"$YC<prefix>${NC}_$KEY_ALGO\"): "
+    # read PREFIX
+    # [ -z "$PREFIX" ] && PREFIX='id'
+    # KEY_PATH="$HOME/.ssh/${PREFIX}_$KEY_ALGO"
+    [ -z "$REM_HOST" ] && REM_HOST='id'
+    KEY_PATH="$HOME/.ssh/${REM_HOST}_$KEY_ALGO"
+fi
+echo -e $BC"(KEY_PATH: \"$KEY_PATH\")"$NC
+
+echo -e $BC"(COMMAND: 'ssh-keygen -t $KEY_ALGO -C \"$KEY_COMMENT\" -f \"$KEY_PATH\"')"$NC
+ssh-keygen -t $KEY_ALGO -C "$KEY_COMMENT" -f "$KEY_PATH"
+
+# TODO: use 1password-cli to save SSH key password (and key itself?) to 1Password

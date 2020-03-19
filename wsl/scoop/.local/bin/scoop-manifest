@@ -1,0 +1,11 @@
+#!/bin/sh
+
+find_pkgs() {
+    find /mnt/c/Users/*/scoop/buckets/*/bucket \
+         /mnt/c/Users/*/scoop/buckets/*/*.json
+}
+
+PKG=`find_pkgs | fzf --prompt "Select Package: "`
+[ -z "$PKG" ] && exit 1
+
+$EDITOR $PKG

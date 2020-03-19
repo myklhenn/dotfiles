@@ -21,19 +21,25 @@ check_command() {
 add_platform () {
 	# ($1: name of platform's directory)
 	echo $CC"found platform \"$1\""$NC
-	PLATFORMS=$PLATFORMS" $1"
+	PLATFORMS="$PLATFORMS $1"
 }
 create_dir () {
 	# ($1: description of directory, $2: path to directory)
 	echo $YC"creating directory for \"$1\""$NC
 	mkdir -pv $2
-	if [ $? -ne 0 ]; then ERRORS=1; fi
+	if [ $? -ne 0 ]; then
+		echo $RC"error creating directory for \"$1\""$NC
+		ERRORS=1;
+	fi
 }
 link_package () {
 	# ($1: name of package's directory)
 	echo $CC"creating symlinks for \"$1\""$NC
 	stow --restow --verbose --ignore=".DS_Store" --target=$HOME $1
-	if [ $? -ne 0 ]; then ERRORS=1; fi
+	if [ $? -ne 0 ]; then
+		echo $RC"error creating symlinks for \"$1\""$NC
+		ERRORS=1;
+	fi
 }
 check_errors () {
 	if [ "$ITERM_PREFS" = "1" ]; then
@@ -41,7 +47,7 @@ check_errors () {
 		echo $YC"As a workaround, configure iTerm to load preferences from:"$NC
 		echo $YC"\n$HOME/.config/iterm\n"$NC
 	fi
-	if [ $ERRORS -ne 0 ]; then
+	if [ "$ERRORS" = "1" ]; then
 		echo $RC"done, but with errors.\n"$NC
 		exit 1
 	else
@@ -59,6 +65,8 @@ DOTFILES_DIR=$(dirname $(realpath $0))
 
 PLATFORMS=""
 add_platform "common"
+
+uname -r | grep "Microsoft" > /dev/null && add_platform "wsl"
 
 case $(uname) in
 	Darwin) add_platform "macos" ;;

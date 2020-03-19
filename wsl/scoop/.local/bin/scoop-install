@@ -1,0 +1,15 @@
+#!/bin/sh
+
+find_pkgs() {
+    find /mnt/c/Users/*/scoop/buckets/*/bucket \
+         /mnt/c/Users/*/scoop/buckets/*/*.json \
+         | awk -F/ '{print $NF}' \
+         | sed 's/.....$//'
+}
+
+PKG=`find_pkgs | fzf --prompt "Select Package: "`
+[ -z "$PKG" ] && exit 1
+
+echo "scoop install -g $PKG"
+cd /mnt/c # stops errors when starting cmd.exe from a WSL path
+scoop install -g $PKG

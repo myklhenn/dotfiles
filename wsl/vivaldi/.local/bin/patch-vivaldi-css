@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+
+from os import path, system
+from subprocess import run, PIPE, DEVNULL
+
+custom_css = """/* Hide Vivaldi menu button
+ * -- a space is left behind where the button's container resides
+ */
+button.vivaldi {
+  display: none !important;
+}
+/* Move tabs left to remove empty space from menu button container
+* -- position of tabs changes dynamically based on the width of the window
+* -- using -1% here ensures things will line up well when the window is
+*    maximized at 1440p
+*/
+#tabs-container.top {
+  margin-left: -1%;
+}
+"""
+
+install_paths = (
+    '/mnt/c/Users/*/scoop/apps/vivaldi/current', # scoop (local install)
+    '/mnt/c/ProgramData/scoop/apps/vivaldi/current', # scoop (global install)
+    '/mnt/c/Users/*/AppData/Local/Vivaldi', # local install (AppData)
+    '/mnt/c/Program\ Files/Vivaldi' # global install (Program Files)
+)
+install_messages = (
+    'Found Vivaldi installed locally via Scoop...',
+    'Found Vivaldi installed globally via Scoop...',
+    'Found Vivaldi installed locally...',
+    'Found Vivaldi installed globally...'
+)
+
+def try_patch(install_path, message):
+    css_file_path = '/Application/*/resources/vivaldi/style/common.css'
+    fuzzy_path = install_path + css_file_path
+
+    find_command = 'find ' + fuzzy_path
+    find_path = run(['bash', '-c', find_command], stdout=PIPE, stderr=DEVNULL)
+    actual_path = find_path.stdout.decode('utf-8').rstrip()
+
+    if path.isfile(actual_path):
+        print(message)
+        tail_file = run(['tail', '-14', actual_path], stdout=PIPE)
+        css_file_end = tail_file.stdout.decode('utf-8')
+        if (css_file_end == custom_css):
+            print('Vivaldi CSS file already patched!')
+        else:
+            print('Patching Vivaldi CSS file...')
+            with open(actual_path, 'a') as css_file:
+                css_file.write(custom_css)
+                print('Vivaldi CSS file patched successfully!')
+
+for install_path, install_message in zip(install_paths, install_messages):
+    try_patch(install_path, install_message)
