@@ -1,6 +1,7 @@
 # set fish environment variables
 
 set -x EDITOR (if test (which nvim); echo nvim; else; echo vim; end)
+set -x PAGER (if test (which less); echo less; else; echo ''; end)
 set -x GREP_COLOR "1;37;45"
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
