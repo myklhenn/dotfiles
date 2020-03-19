@@ -1,0 +1,21 @@
+#!/bin/sh
+
+RC="\033[0;31m" # red color
+CC="\033[0;36m" # cyan color
+BC="\033[0;90m" # black color
+NC="\033[0m" # no color
+
+print_config_param() {
+  # $1: name of config param, $2: description of config param
+  FORMAT="$1 $BC$2$NC = %b%s$NC\n"
+  PARAM=$(scutil --get $1 2>/dev/null)
+  if [ $? != 0 ]; then
+    printf "$FORMAT" "$RC" "(not set)"
+  else
+    printf "$FORMAT" "$CC" "$PARAM"
+  fi
+}
+
+print_config_param "ComputerName" "(User-friendly, in sharing prefs)"
+print_config_param "HostName" "(SSH, in command line, UNIX hostname)"
+print_config_param "LocalHostName" "(Bonjour, AirDrop, file sharing)"
