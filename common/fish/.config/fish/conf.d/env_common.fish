@@ -6,6 +6,12 @@ set -x GREP_COLOR "1;37;45"
 set -x LC_ALL en_US.UTF-8
 set -x LANG en_US.UTF-8
 
+# use lesspipe with less (if available)
+if test (which lesspipe)
+    set -x LESSOPEN "| /usr/bin/lesspipe %s"
+    set -x LESSCLOSE "/usr/bin/lesspipe %s %s"
+end
+
 # highlighting for less / man pages
 set -x LESS_TERMCAP_mb (echo -e '\e[01;31m') # mode-blinking -- red
 set -x LESS_TERMCAP_md (echo -e '\e[01;32m') # mode-doublebright -- bold, green
