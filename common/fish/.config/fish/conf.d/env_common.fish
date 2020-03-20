@@ -1,4 +1,4 @@
-# set fish environment variables
+# set fish environment variables on all platforms
 
 set -x EDITOR (if test (which nvim); echo nvim; else; echo vim; end)
 set -x PAGER (if test (which less); echo less; else; echo ''; end)
