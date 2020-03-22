@@ -1,6 +1,5 @@
-# TODO: how to get this to only run once?
 # install fisher initial plugins for macos on first run
-if not functions -q fisher
+if not test -e $XDG_CONFIG_HOME/fish/conf.d/done.fish
     set -l PLUGINS \
         "franciscolourenco/done" \
         "laughedelic/brew-completions" \
