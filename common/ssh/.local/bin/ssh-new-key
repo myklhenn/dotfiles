@@ -1,51 +1,91 @@
-#!/bin/bash
+#!/bin/sh
 
-BC="\033[0;90m" # black color
-YC="\033[0;33m" # yellow color
-NC="\033[0m" # no color
+BC="\033[0;90m%s\033[0m\n" # black color
+YC="\033[0;33m%s\033[0m" # yellow color (with no newline)
 
-FZF_PROMPT='Select SSH algorithm: '
-ALGOS='ed25519\nrsa'
-KEY_ALGO=`echo -e "$ALGOS" | fzf --height 3 --reverse --prompt "$FZF_PROMPT"`
-[ -z "$KEY_ALGO" ] && exit 1
-echo -e $BC"(KEY_ALGO: \"$KEY_ALGO\")"$NC
+check_command() {
+    # ($1: name of command)
+    if ! which $1 >/dev/null; then
+        echo "Install \"$1\" before using this command." && exit 1
+    fi
+}
+check_exit() {
+    [ $? = 1 ] && exit 1
+}
+prompt() {
+   # ($1: text for prompt, $2: options to choose from -- optional)
+   printf "$2" | fzy --prompt "$1"
+}
+prompt_hl() {
+    # ($1: text for prompt, $2: highlighted word in prompt, $3: options)
+    prompt "$(printf "$1" $(printf $YC "$2"))" "$3"
+}
+prompt_yn() {
+    # ($1: text for prompt)
+    YN=$(prompt "$1")
+    check_exit
+    [ "$YN" = "y" ] && return 0
+}
+log() {
+    # ($1: text to log)
+    printf $BC "($1)"
+}
+log_var() {
+    # ($1: variable name, $2: variable value)
+    printf $BC "$1: \"$2\""
+}
 
-read -p "Customize SSH key comment? (y/N): " CUSTOM
+check_command "fzy"
+ALGOS='dsa\necdsa\ned25519\nrsa'
+KEY_ALGO=''
+while [ -z "$KEY_ALGO" ]; do
+    KEY_ALGO=$(prompt 'Select SSH algorithm: ' $ALGOS)
+    check_exit
+    printf "$ALGOS" | grep -e "^$KEY_ALGO$" > /dev/null || KEY_ALGO=''
+done
+log_var 'KEY_ALGO' "$KEY_ALGO"
 
 KEY_COMMENT=''
+REM_USER=''
 REM_HOST=''
-if [ "$CUSTOM" = "y" ]; then
-    read -p 'Enter custom SSH key comment: ' KEY_COMMENT
+if prompt_yn 'Customize SSH key comment? (y/N): '; then
+    KEY_COMMENT=$(prompt 'Enter custom SSH key comment: ')
+    check_exit
 else
-    echo -e $BC'(Using SSH key comment template)'$NC
-    echo -ne "Enter user of remote machine (i.e. \"$YC<user>$NC@host\"): "
-    read REM_USER
-    [ -z "$REM_USER" ] && exit 1
-    echo -ne "Enter hostname of remote machine (i.e. \"user@$YC<host>$NC\"): "
-    read REM_HOST
-    [ -z "$REM_HOST" ] && exit 1
-    KEY_COMMENT="`whoami`@`hostname` -> $REM_USER@$REM_HOST"
+    log 'Using SSH key comment template'
+    while [ -z "$REM_USER" ]; do
+        REM_USER=$(prompt_hl 'Enter user of remote machine (i.e. "%s@<host>"): ' '<user>')
+        check_exit
+    done
+    while [ -z "$REM_HOST" ]; do
+        REM_HOST=$(prompt_hl 'Enter hostname of remote machine (i.e. "<user>@%s"): ' '<host>')
+        check_exit
+    done
+    KEY_COMMENT="$(whoami)@$(hostname) -> $REM_USER@$REM_HOST"
 fi
-echo -e $BC"(KEY_COMMENT: \"$KEY_COMMENT\")"$NC
-
-read -p "Create custom SSH key name/path? (y/N): " CUSTOM
+log_var 'KEY_COMMENT' "$KEY_COMMENT"
 
 KEY_PATH=''
-if [ "$CUSTOM" = "y" ]; then
-    read -p 'Enter custom SSH key name/path: ' KEY_PATH
-    [ -z "$KEY_PATH" ] && exit 1
+if prompt_yn 'Create custom SSH key name/path? (y/N): '; then
+    while [ -z "$KEY_PATH" ]; do
+        KEY_PATH=`prompt 'Enter custom SSH key name/path: '`
+        check_exit
+    done
 else
-    # echo -e $BC'(Using SSH key name template)'$NC
-    # echo -ne "Enter SSH key name prefix (i.e. \"$YC<prefix>${NC}_$KEY_ALGO\"): "
+    # log 'Using SSH key name template'
+    # printf "Enter SSH key name prefix (i.e. \"%s_$KEY_ALGO\"): " \
+    #     `printf $YC '<prefix>'`
     # read PREFIX
     # [ -z "$PREFIX" ] && PREFIX='id'
     # KEY_PATH="$HOME/.ssh/${PREFIX}_$KEY_ALGO"
     [ -z "$REM_HOST" ] && REM_HOST='id'
     KEY_PATH="$HOME/.ssh/${REM_HOST}_$KEY_ALGO"
+    [ ! -e "$HOME/.ssh" ] && mkdir -pv  $HOME/.ssh
 fi
-echo -e $BC"(KEY_PATH: \"$KEY_PATH\")"$NC
+log_var 'KEY_PATH' $KEY_PATH
 
-echo -e $BC"(COMMAND: 'ssh-keygen -t $KEY_ALGO -C \"$KEY_COMMENT\" -f \"$KEY_PATH\"')"$NC
-ssh-keygen -t $KEY_ALGO -C "$KEY_COMMENT" -f "$KEY_PATH"
+KEY_CMD="ssh-keygen -t $KEY_ALGO -C \"$KEY_COMMENT\" -f \"$KEY_PATH\""
+log "$KEY_CMD"
+eval "$KEY_CMD"
 
 # TODO: use 1password-cli to save SSH key password (and key itself?) to 1Password

@@ -1,15 +1,19 @@
 #!/bin/sh
 
-find_pkgs() {
-    find /mnt/c/Users/*/scoop/buckets/*/bucket \
+find_all_pkgs() {
+    find /mnt/c/Users/*/scoop/buckets/*/bucket/* \
          /mnt/c/Users/*/scoop/buckets/*/*.json \
+         2>/dev/null \
          | awk -F/ '{print $NF}' \
          | sed 's/.....$//'
 }
+find_installed_pkgs() {
+    scoop export | awk -F' ' '{ print $1 }'
+}
 
-PKG=`find_pkgs | fzf --prompt "Select Package: "`
+PKG=`find_all_pkgs | fzy --prompt "Select Package: "`
 [ -z "$PKG" ] && exit 1
 
-echo "scoop install -g $PKG"
+echo "scoop install $PKG"
 cd /mnt/c # stops errors when starting cmd.exe from a WSL path
-scoop install -g $PKG
+scoop install $PKG

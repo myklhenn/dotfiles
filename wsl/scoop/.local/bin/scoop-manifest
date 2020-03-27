@@ -5,7 +5,7 @@ find_pkgs() {
          /mnt/c/Users/*/scoop/buckets/*/*.json
 }
 
-PKG=`find_pkgs | fzf --prompt "Select Package: "`
+PKG=`find_pkgs | fzy --prompt "Select Package: "`
 [ -z "$PKG" ] && exit 1
 
 $EDITOR $PKG

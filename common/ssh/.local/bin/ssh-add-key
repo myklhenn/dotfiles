@@ -2,21 +2,19 @@
 
 check_command() {
     if ! which $1 >/dev/null; then
-        echo 'Install "fzy" before using this command.' && exit 1
+        echo "Install \"$1\" before using this command." && exit 1
     fi
 }
-
 find_keys() {
     find $1 \( -name "*_ed25519" -or -name "*_rsa" \)
 }
-
 select_key() {
     echo "$1" | awk -F/ '{print $NF}' | fzy --prompt 'Select SSH Key: '
 }
 
 check_command "fzy"
 KEY_DIR="$HOME/.ssh"
-KEYS=`find_keys $KEY_DIR`
+KEYS=`find_keys "$KEY_DIR"`
 KEY=`select_key "$KEYS"`
 [ -z "$KEY" ] && exit 1
 ssh-add $KEY_DIR/$KEY

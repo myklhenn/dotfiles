@@ -37,7 +37,7 @@ def try_patch(install_path, message):
     fuzzy_path = install_path + css_file_path
 
     find_command = 'find ' + fuzzy_path
-    find_path = run(['bash', '-c', find_command], stdout=PIPE, stderr=DEVNULL)
+    find_path = run(['sh', '-c', find_command], stdout=PIPE, stderr=DEVNULL)
     actual_path = find_path.stdout.decode('utf-8').rstrip()
 
     if path.isfile(actual_path):
