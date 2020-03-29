@@ -1,23 +1,23 @@
+# package enhancd
+# package pisces
+# package sudope
 package archlinux
 package await
 package bang-bang
+package docker-fish-completion
+package done
 package export
 package extract
+package fish-completion-helpers
+package fish-fastdir
+package fish-nvm
+package fish-ssh-agent
 package getopts
 package hash
-package https://github.com/b4b4r07/enhancd
-package https://github.com/barnybug/docker-fish-completion
-package https://github.com/danhper/fish-completion-helpers
-package https://github.com/danhper/fish-fastdir
-package https://github.com/danhper/fish-ssh-agent
-package https://github.com/jethrokuan/z
-package https://github.com/jorgebucaran/fish-nvm
-package https://github.com/laughedelic/pisces
-package https://github.com/myklhenn/my-fish-prompt
-package https://github.com/oh-my-fish/plugin-localhost
-package https://github.com/oh-my-fish/plugin-ssh
-package sudope
+package localhost
+package ssh
 package technicolor
 package thefuck
 package tiny
-theme https://github.com/myklhenn/my-fish-prompt
+package z
+theme my-fish-prompt

@@ -4,12 +4,14 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+brew "coreutils"
 brew "exa"
 brew "exiftool"
 brew "ffmpeg"
 brew "fish"
-brew "fzf"
+brew "fzy"
 brew "git"
+brew "grc"
 brew "htop"
 brew "icu4c"
 brew "mas"
@@ -20,12 +22,15 @@ brew "ranger"
 brew "rsync"
 brew "stow"
 brew "switchaudio-osx"
+brew "terminal-notifier"
+brew "thefuck"
 brew "trash"
 # brew "vifm"
-brew "yarn", args: ["ignore-dependencies"]
+brew "wakeonlan"
+brew "yarn"
 brew "youtube-dl"
-brew "z"
-cask "adoptopenjdk8"
+cask "1password-cli"
+# cask "adoptopenjdk8"
 cask "alfred"
 # cask "android-studio"
 cask "appcleaner"
@@ -47,6 +52,9 @@ cask "fantastical"
 cask "firefox"
 # cask "flotato"
 # cask "folx"
+cask "font-cascadia"
+cask "font-cascadia-mono"
+cask "font-cascadia-mono-pl"
 cask "font-courier-prime"
 cask "font-courier-prime-code"
 cask "font-courier-prime-sans"
@@ -65,6 +73,7 @@ cask "freac"
 cask "gitkraken"
 cask "gitup"
 cask "google-chrome"
+cask "icons8"
 cask "iina"
 # cask "inkscape"
 cask "install-disk-creator"
@@ -91,29 +100,28 @@ cask "notion"
 cask "ocenaudio"
 cask "openemu"
 cask "osxfuse"
-# cask "parsec"
+cask "parsec"
 cask "platypus"
 cask "plex"
 # cask "pocket-casts"
 # cask "postman"
-cask "private-internet-access"
+# cask "private-internet-access"
 # cask "pycharm-ce"
 # cask "satellite-eyes"
 cask "scummvm"
 # cask "sharemouse"
-# cask "silverlight"
 cask "sloth"
 # cask "spotify"
 # cask "spotify-notifications"
 cask "steam"
 # cask "syncthing"
 cask "taskexplorer"
-cask "teamviewer"
+# cask "teamviewer"
 cask "transmission"
-# cask "tunnelblick"
 # cask "typora"
 cask "viscosity"
-cask "visual-studio-code"
+cask "visual-studio-code-insiders"
+# cask "visual-studio-code"
 cask "vivaldi"
 cask "vmware-fusion"
 cask "wireshark"
@@ -121,8 +129,10 @@ cask "wireshark"
 mas "1Password 7", id: 1333542190
 mas "AdGuard for Safari", id: 1440147259
 mas "Airmail", id: 918858936
-mas "ColorSlurp", id: 1287239339
+mas "Bear", id: 1091189122
 mas "Deliveries", id: 924726344
+mas "Discovery", id: 1381004916
+mas "Drop", id: 1173932628
 mas "Expressions", id: 913158085
 mas "Gemini 2", id: 1090488118
 mas "Image2icon", id: 992115977
@@ -147,10 +157,14 @@ mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
 mas "PiPer", id: 1421915518
 mas "Pixelmator Pro", id: 1289583905
+mas "Playgrounds", id: 1496833156
+mas "Qi FM", id: 1479696191
+mas "QREncoder", id: 452695239
 mas "Shazam", id: 897118787
 mas "Soulver", id: 413965349
 mas "Speedtest", id: 1153157709
 mas "The Unarchiver", id: 425424353
+mas "Todoist", id: 585829637
 mas "Trello", id: 1278508951
 mas "Twitter", id: 1482454543
 mas "WiFi Explorer Lite", id: 1408727408
