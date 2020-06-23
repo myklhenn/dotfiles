@@ -1,7 +1,7 @@
 # install oh-my-fish and initial plugins on first run
 set -l OMF_INST "$HOME/.install-omf"
 set -l OMF_LOCK "$OMF_INST.lock"
-if not functions -q omf; and not test -e $OMF_LOCK
+if not functions -q omf; and not test -e "$OMF_LOCK"
   if not test (which curl)
     echo "Startup script \"omf_common.fish\" requires \"curl\" to run."
     echo "Please install before next shell startup."
@@ -14,6 +14,6 @@ if not functions -q omf; and not test -e $OMF_LOCK
 end
 # clean up after installation
 if functions -q omf
-  test -e $OMF_INST; and rm $OMF_INST
-  test -e $OMF_LOCK; and rm $OMF_LOCK
+  test -e "$OMF_INST"; and rm "$OMF_INST"
+  test -e "$OMF_LOCK"; and rm "$OMF_LOCK"
 end

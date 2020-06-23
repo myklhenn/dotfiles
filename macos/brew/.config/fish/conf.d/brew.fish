@@ -7,6 +7,7 @@ if test (which brew)
     "bu       % brew upgrade" \
     "bi       % brew install" \
     "bl       % brew list" \
+    "bo       % brew outdated" \
     "bin      % brew info" \
     "br       % brew uninstall" \
     "bun      % brew uninstall" \

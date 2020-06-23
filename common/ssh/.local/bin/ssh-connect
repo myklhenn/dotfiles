@@ -1,0 +1,19 @@
+#!/bin/sh
+
+check_command() {
+    if ! which $1 >/dev/null; then
+        echo "Install \"$1\" before using this command." && exit 1
+    fi
+}
+get_hosts() {
+    cat $HOME/.ssh/config | grep -e "^Host " | awk -F' ' '{print $NF}'
+}
+select_host() {
+    echo "$1" | fzy --prompt 'Select SSH Host: '
+}
+
+check_command "fzy"
+HOSTS=$(get_hosts)
+HOST=$(select_host "$HOSTS")
+[ -z "$HOST" ] && exit 1
+ssh $HOST

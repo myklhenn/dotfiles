@@ -11,3 +11,9 @@ if test (which ssh-keygen)
     # alias   command
     "sk       % ssh-new-key"
 end
+
+if test (which ssh-connect)
+  __fish_load_abbrs \
+    # alias   command
+    "sc       % ssh-connect"
+end

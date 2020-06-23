@@ -7,14 +7,14 @@ else if test (which vim)
   set -g VIM_PLUG_PATH ~/.vim/autoload/plug.vim
 end
 
-if test -n "$VI_EDITOR"
+if set -q VI_EDITOR
   # add abbreviations for launching primary editor
   for ABBR in 'n' 'nv' 'nvi' 'nvim' 'v' 'vi' 'vim'
     abbr --add $ABBR $VI_EDITOR
   end
 
   # install vim-plug and plugins in init.vim/.vimrc on first run
-  if test -n "$VIM_PLUG_PATH"; and not test -e "$VIM_PLUG_PATH"
+  if set -q VIM_PLUG_PATH; and not test -e "$VIM_PLUG_PATH"
     if not test (which curl)
         echo "Startup script \"editor.fish\" requires \"curl\" to run."
         echo "Please install before next shell startup."

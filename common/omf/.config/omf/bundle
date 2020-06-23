@@ -1,5 +1,6 @@
 # package enhancd
 # package pisces
+# package ssh
 # package sudope
 package archlinux
 package await
@@ -14,10 +15,9 @@ package fish-nvm
 package fish-ssh-agent
 package getopts
 package hash
+package humanize-duration
 package localhost
-package ssh
 package technicolor
-package thefuck
 package tiny
 package z
 theme my-fish-prompt
