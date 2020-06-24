@@ -13,7 +13,4 @@ find_installed_pkgs() {
 
 PKG=`find_all_pkgs | fzy --prompt "Select Package: "`
 [ -z "$PKG" ] && exit 1
-
-echo "scoop install $PKG"
-cd /mnt/c # stops errors when starting cmd.exe from a WSL path
-scoop install $PKG
+echo $PKG | awk '{print tolower($0)}'

@@ -19,3 +19,9 @@ function __fish_add_to_path -d "Append new directories to PATH"
     end
   end
 end
+
+function __fish_test_cmds -d "Test if commands exist"
+  for cmd in $argv
+    test (which $cmd); or return 1
+  end
+end
