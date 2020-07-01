@@ -1,6 +1,12 @@
 set termguicolors
-colorscheme monokai
 syntax on
+
+try
+    colorscheme monokai_pro
+catch /^Vim\%((\a\+)\)\=:E185/
+	" fall back to this color scheme if vim-plug hasn't initialized yet
+    colorscheme monokai
+endtry
 
 " follow terminal background transparency
 hi Normal ctermbg=none
@@ -100,6 +106,8 @@ endif
 
 Plug 'arakashic/chromatica.nvim'
 Plug 'brooth/far.vim'
+Plug 'phanviet/vim-monokai-pro'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 
