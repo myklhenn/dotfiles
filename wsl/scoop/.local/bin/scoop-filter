@@ -1,16 +1,83 @@
-#!/bin/sh
+#!/bin/bash
 
-find_all_pkgs() {
+print() {
+    printf '%s\n' "$1"
+}
+print_pkg() {
+    printf '\033[0;90m%s\033[0m\n' "$1"
+}
+get_all_pkgs() {
     find /mnt/c/Users/*/scoop/buckets/*/bucket/* \
-         /mnt/c/Users/*/scoop/buckets/*/*.json \
-         2>/dev/null \
-         | awk -F/ '{print $NF}' \
-         | sed 's/.....$//'
+        /mnt/c/Users/*/scoop/buckets/*/*.json \
+        2>/dev/null |
+        sed 's,\.json$,,g' |
+        awk -F/ '{print $8"/"tolower($NF)}' |
+        sort
+    # >> bucket/package-name
 }
-find_installed_pkgs() {
-    scoop export | awk -F' ' '{ print $1 }'
+get_installed_pkgs() {
+    scoop export | tr -d '[]' | awk '{print $3"/"tolower($1)}'
+    # >> bucket/package-name
+}
+get_not_installed_pkgs() {
+    fgrep -v -f <(get_installed_pkgs) <(get_all_pkgs)
+    # >> bucket/package-name
+}
+format_pkg_list() {
+    awk -F/ '{printf("%s\033[0;90m [%s]\033[0m\n",$2,$1)}'
+    # >> package-name [bucket]
+}
+format_pkg_path() {
+    sed 's,\x1B\[[0-9;]*[a-zA-Z],,g' | tr -d '[]' | awk '{print $2"/"$1}'
+    # >> bucket/package-name
+}
+rm_line() {
+    fgrep -F -v -e "$1"
+}
+select_pkg() {
+    format_pkg_list | sort | fzy --prompt "Select Package: "
+}
+multi_select_pkg() {
+    format_pkg_list | sort <(print '--DONE--') - | fzy --prompt "$1"
 }
 
-PKG=`find_all_pkgs | fzy --prompt "Select Package: "`
-[ -z "$PKG" ] && exit 1
-echo $PKG | awk '{print tolower($0)}'
+# parse args
+O=$(getopt -o aim -l all,installed,multi --name "$0" -- "$@")
+eval set -- "$O"
+while true; do
+    case "$1" in
+    -a | --all) PKG_LIST=$(get_all_pkgs) && shift ;;
+    -i | --installed) PKG_LIST=$(get_installed_pkgs) && shift ;;
+    -m | --multi) MULTI=1 && shift ;;
+    --) shift && break ;;
+    *) print "Unknown option: $1" >&2 && exit 1 ;;
+    esac
+done
+
+# get packages that aren't installed if no args (ignoring --multi)
+[ -z "$PKG_LIST" ] && PKG_LIST=$(get_not_installed_pkgs)
+# abort if there's still no package list by now
+[ -z "$PKG_LIST" ] && exit 1
+
+if [[ $MULTI -eq 1 ]]; then
+    # use multi-select mode
+    let "COUNT=0"
+    while true; do
+        # package selection loop
+        PROMPT=$(printf "Select Packages (%d): " $COUNT)
+        PKG=$(print "$PKG_LIST" | multi_select_pkg "$PROMPT")
+        [ -z "$PKG" ] && exit 1
+        [ "$PKG" = "--DONE--" ] && break
+        PKG=$(print "$PKG" | format_pkg_path)
+        PKGS+="$PKG "
+        # print_pkg "$PKG"
+        PKG_LIST=$(print "$PKG_LIST" | rm_line "$PKG" | rm_line "--DONE--")
+        let "COUNT++"
+    done
+    print "$PKGS"
+else
+    # regular selection mode
+    PKG=$(print "$PKG_LIST" | select_pkg)
+    [ -z "$PKG" ] && exit 1
+    print "$PKG" | format_pkg_path
+fi
