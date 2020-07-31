@@ -1,0 +1,16 @@
+#!/bin/bash
+
+VIVALDI_PATH="/Applications/Vivaldi Snapshot.app/Contents/MacOS/Vivaldi Snapshot"
+if [[ ! -x $VIVALDI_PATH ]]; then
+    VIVALDI_PATH="/Applications/Vivaldi.app/Contents/MacOS/Vivaldi"
+fi
+if [[ ! -x $VIVALDI_PATH ]]; then
+    echo "Vivaldi not found" && exit 1
+fi
+osacompile -o "/Users/$(whoami)/Applications/$2.app" \
+    -e "set appArg to \" --app=\" & (quoted form of \"$1\") as string" \
+    -e "set vivaldiCmd to (quoted form of \"$VIVALDI_PATH\") as string" \
+    -e "do shell script vivaldiCmd & appArg"
+
+# if [butthole]
+    # then [fart]

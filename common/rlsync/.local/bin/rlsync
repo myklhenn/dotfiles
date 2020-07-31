@@ -1,0 +1,50 @@
+#!/bin/sh
+
+print() {
+    printf '%s\n' "$1"
+}
+print_usage() {
+    print "Usage: $0 -c|-l"
+    print "    -c  clear Resilio Sync history"
+    print "    -l  list files mentioned in history"
+}
+get_rlsync_dir() {
+    uname -r | grep "Microsoft" &>/dev/null && PLATFORM="Windows"
+    [ -z $PLATFORM ] && PLATFORM="$(uname)"
+    case $PLATFORM in
+        Microsoft) print "" ;;
+        Darwin) print "$HOME/Library/Application Support/Resilio Sync" ;;
+        Linux) print "" ;;
+    esac
+}
+clear_history() {
+    which trash &>/dev/null && RM_CMD="trash"
+    [ -z "$RM_CMD" ] && RM_CMD="rm -r"
+    [ -e "$RLSYNC_HISTFILE" ] && $RM_CMD "$RLSYNC_HISTFILE"
+    [ -e "$RLSYNC_HISTFILE.old" ] && $RM_CMD "$RLSYNC_HISTFILE.old"
+}
+list_files_added() {
+    cat "$RLSYNC_HISTFILE" |
+        sed -e $'s/9:timestamp/\\\n/g' \
+            -e $'s/d10:\.fileguard40:/\\\n/g' \
+            -e $'s/Added file //g' \
+            -e $'s/Updated file //g' |
+        awk -F: '{print $10}' |
+        sort -u
+}
+
+RLSYNC_DIR="$(get_rlsync_dir)"
+[ -z "$RLSYNC_DIR" ] && print "Unknown platform detected. Exiting." && exit 1
+RLSYNC_HISTFILE="$RLSYNC_DIR/history.dat"
+
+# parse args
+O=$(getopt cl $*)
+eval set -- "$O"
+while true; do
+    case "$1" in
+    -c) clear_history; exit 0 ;;
+    -l) list_files_added; exit 0 ;;
+    --) print 'No option specified. Exiting.' && print_usage && exit 1 ;;
+    *) print "Unknown option: $1" >&2 && print_usage && exit 1 ;;
+    esac
+done
