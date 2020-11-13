@@ -11,7 +11,11 @@ if __fish_test_cmds "scoop"
         "sr       % scoop uninstall" \
         "ss       % scoop search" \
         "so       % scoop status" \
-        "scl      % scoop cleanup"
+        "scl      % scoop cleanup" \
+        "scla     % scoop cleanup \*" \
+        "scs      % scoop cache show" \
+        "scr      % scoop cache rm" \
+        "scra     % scoop cache rm \*"
 end
 
 if __fish_test_cmds "scoop-filter"
@@ -24,6 +28,7 @@ if __fish_test_cmds "scoop-filter"
         "sfim     % scoop-filter --installed --multi" \
         "sfm      % scoop-filter --multi" \
         "sif      % scoop install (scoop-filter)" \
+        "sifm     % scoop install (scoop-filter --multi)" \
         "suf      % scoop update (scoop-filter --installed)" \
         "sufm     % scoop update (scoop-filter --installed --multi)" \
         "suff     % scoop update --force (scoop-filter --installed)" \
@@ -31,5 +36,7 @@ if __fish_test_cmds "scoop-filter"
         "sufmf    % scoop update --force (scoop-filter --installed --multi)" \
         "sinf     % scoop info (scoop-filter --all)" \
         "srf      % scoop uninstall (scoop-filter --installed)" \
-        "srfm      % scoop uninstall (scoop-filter --installed --multi)"
+        "srfm     % scoop uninstall (scoop-filter --installed --multi)" \
+        "sclf     % scoop cleanup (scoop-filter --installed)" \
+        "sclfm    % scoop cleanup (scoop-filter --installed --multi)"
 end
