@@ -1,22 +1,29 @@
+tap "federico-terzi/espanso"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+brew "autojump"
+brew "borgbackup"
 brew "coreutils"
 brew "exa"
 brew "exiftool"
+brew "federico-terzi/espanso/espanso"
 brew "ffmpeg"
 brew "fish"
+brew "fluid-synth"
 brew "fzy"
 brew "git"
 brew "grc"
 brew "htop"
 brew "icu4c"
 brew "mas"
+brew "ncdu"
 brew "neofetch"
 brew "neovim"
+brew "openjdk"
 brew "python"
 brew "ranger"
 brew "rsync"
@@ -44,6 +51,7 @@ cask "brooklyn"
 # cask "caprine"
 cask "cardhop"
 cask "chatology"
+cask "clean-me"
 cask "cleanmymac"
 cask "daisydisk"
 cask "dash"
@@ -51,6 +59,8 @@ cask "devdocs"
 cask "discord"
 cask "docker"
 # cask "dropbox"
+cask "duet"
+# cask "duplicati"
 cask "fantastical"
 cask "firefox"
 cask "flashforge-flashprint"
@@ -74,9 +84,10 @@ cask "font-iosevka"
 cask "font-terminus"
 cask "font-ubuntu"
 cask "freac"
+# cask "github"
 cask "gitkraken"
 cask "gitup"
-cask "goofy"
+# cask "goofy"
 cask "google-chrome"
 cask "icons8"
 cask "iina"
@@ -89,12 +100,14 @@ cask "java"
 cask "keep"
 cask "keepingyouawake"
 cask "kid3"
+cask "logitech-g-hub"
 # cask "logitech-myharmony"
 cask "logitech-options"
 # cask "logitech-unifying"
 # cask "mailspring"
 cask "mark-text"
 cask "marta"
+cask "microsoft-edge"
 cask "middleclick"
 cask "mkvtoolnix"
 # cask "mobile-mouse-server"
@@ -110,9 +123,10 @@ cask "osxfuse"
 cask "parsec"
 cask "platypus"
 cask "plex"
-# cask "pocket-casts"
+cask "pocket-casts"
 # cask "postman"
 # cask "pycharm-ce"
+cask "resilio-sync"
 # cask "satellite-eyes"
 cask "scummvm"
 cask "sharemouse"
@@ -121,24 +135,26 @@ cask "soundflower"
 cask "spotify"
 # cask "spotify-notifications"
 cask "steam"
+cask "sublime-text"
 # cask "syncthing"
 cask "taskexplorer"
 # cask "teamviewer"
 cask "transmission"
 # cask "typora"
 cask "viscosity"
-cask "visual-studio-code-insiders"
-# cask "visual-studio-code"
+cask "visual-studio-code"
 cask "vivaldi"
 cask "vmware-fusion"
+# cask "vorta"
 cask "wireshark"
 cask "xbox360-controller-driver-unofficial"
 # cask "xquartz"
 cask "zoomus"
 mas "AdGuard for Safari", id: 1440147259
 mas "Airmail", id: 918858936
-mas "Bear", id: 1091189122
+mas "Boop", id: 1518425043
 mas "Deliveries", id: 924726344
+mas "Developer", id: 640199958
 mas "Discovery", id: 1381004916
 mas "Drop", id: 1173932628
 mas "Expressions", id: 913158085
@@ -156,10 +172,14 @@ mas "Logic Pro X", id: 634148309
 mas "Mactracker", id: 430255202
 mas "Magnet", id: 441258766
 mas "MainStage 3", id: 634159523
+mas "Messenger", id: 1480068668
 mas "Microsoft Excel", id: 462058435
+mas "Microsoft OneNote", id: 784801555
 mas "Microsoft PowerPoint", id: 462062816
 mas "Microsoft Remote Desktop", id: 1295203466
+# mas "Microsoft To Do", id: 1274495053
 mas "Microsoft Word", id: 462054704
+# mas "Mobile Mouse Server", id: 412814284
 mas "Numbers", id: 409203825
 mas "OneDrive", id: 823766827
 mas "Pages", id: 409201541
@@ -173,7 +193,7 @@ mas "Soulver", id: 413965349
 mas "Speedtest", id: 1153157709
 mas "The Unarchiver", id: 425424353
 mas "Todoist", id: 585829637
-mas "Trello", id: 1278508951
+# mas "Trello", id: 1278508951
 mas "Twitter", id: 1482454543
 mas "WiFi Explorer Lite", id: 1408727408
 mas "Xcode", id: 497799835
