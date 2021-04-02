@@ -15,7 +15,7 @@ end
 function __fish_add_to_path -d "Append new directories to PATH"
   for new_path in $argv
     if test -d "$new_path"
-      set -U -a fish_user_paths $new_path
+      fish_add_path "$new_path"
     end
   end
 end
