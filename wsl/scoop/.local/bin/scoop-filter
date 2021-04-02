@@ -16,7 +16,7 @@ get_all_pkgs() {
     # >> bucket/package-name
 }
 get_installed_pkgs() {
-    scoop export | tr -d '[]' | awk '{print $3"/"tolower($1)}'
+    scoop export | sed 's/\r$//' | tr -d '[]' | awk '{print $3"/"tolower($1)}'
     # >> bucket/package-name
 }
 get_not_installed_pkgs() {
