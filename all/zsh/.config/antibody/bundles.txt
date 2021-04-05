@@ -1,0 +1,17 @@
+# archive extraction handler
+ohmyzsh/ohmyzsh path:plugins/extract
+
+# ctrl-z pauses and resumes current process
+ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
+
+# fish-like command abbreviations
+olets/zsh-abbr
+
+# fish-like command syntax highlighting
+zdharma/fast-syntax-highlighting
+
+# fish-like command autosuggestions
+zsh-users/zsh-autosuggestions
+
+# additional command completions
+zsh-users/zsh-completions
