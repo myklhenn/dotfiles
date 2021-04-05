@@ -1,0 +1,43 @@
+#!/bin/sh
+# a simple script to help print log-style messages
+
+print() {
+    for line in "$@"; do printf '%s\n' "$line"; done
+}
+print_usage() {
+    print "usage: msg <opt> <message> ..." \
+        "  -e, --error    ex: [ERROR] message" \
+        "  -w, --warn     ex: [WARN] message" \
+        "  -i, --info     ex: [INFO] message" \
+        "  -d, --debug    ex: [DEBUG] message" \
+        "  -f, --failure  ex (in red): message" \
+        "  -s, --success  ex (in green): message" \
+        "  -h, --help     shows this message"
+}
+error() {
+    print "msg: $1"; print_usage; exit 1
+}
+set_line_format() {
+    if [ -z "$1" ]; then
+        line_format="%s\n"
+        tput colors > /dev/null && line_format="\033[0;${2}m%s\033[0m\n"
+    else
+        line_format="[%s] %s\n"
+        tput colors > /dev/null && line_format="[\033[0;${2}m${1}\033[0m] %s\n"
+    fi
+}
+
+[ "$#" = '0' ] && error 'not enough arguments provided'
+case "$1" in
+    '-e'|'--error')   set_line_format 'ERROR' '31' ;; # red
+    '-w'|'--warn')    set_line_format 'WARN' '33'  ;; # yellow
+    '-i'|'--info')    set_line_format 'INFO' '34'  ;; # blue
+    '-d'|'--debug')   set_line_format 'DEBUG' '35' ;; # magenta
+    '-f'|'--failure') set_line_format '' '31' ;; # red
+    '-s'|'--success') set_line_format '' '32' ;; # green
+    '-h'|'--help')    print_usage 0 ;;
+    *) error "log level \"$1\" not supported";;
+esac
+for str in "${@:2}"; do
+    printf "$line_format" "$str"
+done

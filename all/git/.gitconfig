@@ -1,0 +1,9 @@
+[user]
+	name = Michael Henning
+	email = mykl951@gmail.com
+[core]
+	editor = nvim
+[color]
+	ui = auto
+[github]
+	user = myklhenn

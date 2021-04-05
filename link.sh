@@ -1,89 +1,121 @@
-#!/bin/sh
+#!/bin/bash
 #
 # A script to link dotfiles located in this repository to $HOME, using "stow"
 #
 # Created by Michael Henning <mykl951@gmail.com> -- https://github.com/myklhenn
 
-GC="\033[0;32m%s\033[0m\n" # green color
-YC="\033[0;33m%s\033[0m\n" # yellow color
-CC="\033[0;36m%s\033[0m\n" # cyan color
-RC="\033[0;31m%s\033[0m\n" # red color
-NC="\033[0m%s\n" # normal color
+default_platform='all'
 
-check_command() {
-	# ($1: name of command)
-	if ! which $1 > /dev/null; then
-		printf $YC "Could not find \"$1\" command on your system."
-		printf $YC "Please install before using this script."
-		exit 1
-	fi
+msg() {
+    if [ "$dotfiles_valid" = "1" ]; then
+        $DOTFILES/$default_platform/bin/.local/bin/msg "$@"
+    else
+        line_format="[%s] %s\n"
+        case "$1" in
+            '-e'|'--error') tput colors > /dev/null \
+                && line_format="[\033[0;31mERROR\033[0m] %s\n" ;;
+            '-w'|'--warn')  tput colors > /dev/null \
+                && line_format="[\033[0;33mWARN\033[0m] %s\n" ;;
+        esac
+        for str in "${@:2}"; do
+            printf "$line_format" "$str"
+        done
+    fi
+}
+check_dotfiles_env() {
+    if [ -z "$DOTFILES" ]; then
+        msg -w "\"\$DOTFILES\" environment variable not set."
+        msg -w "Using default value \"$HOME/.dotfiles\"."
+        DOTFILES="$HOME/.dotfiles"
+    fi
+    if [ ! -d "$DOTFILES" ] || [ ! -d "$DOTFILES/$default_platform" ]; then
+        msg -e "Path in \"\$DOTFILES\" environment variable does not" \
+            "contain a valid dotfiles folder." \
+            "Please fix before using this script."
+        exit 1
+    fi
+    dotfiles_valid=1
+}
+check_commands() {
+    # ($1: name of command)
+    error='[\033[0;31mERROR\033[0m] %s\n'
+    for chk_cmd in $@; do
+        if ! which $chk_cmd > /dev/null; then
+            msg -e "Could not find \"$chk_cmd\" command on your system."
+            errors=1
+        fi
+    done
+    if [ "$errors" = "1" ]; then
+        msg -e "Please install before using this script."
+        exit 1
+    fi
 }
 add_platform () {
-	# ($1: name of platform's directory)
-	printf $CC "found platform \"$1\""
-	PLATFORMS="$PLATFORMS $1"
+    # ($1: name of platform's directory)
+    msg -i "found platform \"$1\""
+    platforms="$platforms $1"
 }
 create_dir () {
-	# ($1: description of directory, $2: path to directory)
-	printf $YC "creating directory for \"$1\""
-	mkdir -pv $2
-	if [ $? -ne 0 ]; then
-		printf $RC "error creating directory for \"$1\""
-		ERRORS=1;
-	fi
+    # ($1: description of directory, $2: path to directory)
+    msg -i "creating directory for \"$1\""
+    mkdir -pv $2
+    if [ $? -ne 0 ]; then
+        msg -e "error creating directory for \"$1\""
+        errors=1;
+    fi
 }
 link_package () {
-	# ($1: name of platform, $2: name of package's directory)
-	printf $CC "creating symlinks for \"$1/$2\""
-	stow --restow --verbose --ignore=".DS_Store" --target=$HOME $2
-	if [ $? -ne 0 ]; then
-		printf $RC "error creating symlinks for \"$1/$2\""
-		ERRORS=1;
-	fi
+    # ($1: name of platform, $2: name of package's directory)
+    msg -i "creating symlinks for \"$1/$2\""
+    stow $stow_opts --verbose --ignore=\".DS_Store\" --target=$HOME $2
+    if [ $? -ne 0 ]; then
+        msg -e "error creating symlinks for \"$1/$2\""
+        errors=1;
+    fi
 }
 check_errors () {
-	if [ "$ITERM_PREFS" = "1" ]; then
-		printf $YC "NOTE: iTerm overwrites links when saving preferences."
-		printf $YC "As a workaround, configure iTerm to load preferences from:"
-		printf $YC "$HOME/.config/iterm"
-	fi
-	if [ "$ERRORS" = "1" ]; then
-		printf $RC "done, but with errors."
-		exit 1
-	else
-		printf $GC "done."
-		exit 0
-	fi
+    if [ "$iterm_prefs" = "1" ]; then
+        msg -w "NOTE: iTerm overwrites links when saving preferences." \
+            "As a workaround, configure iTerm to load preferences from:" \
+            "$HOME/.config/iterm2"
+    fi
+    if [ "$errors" = "1" ]; then
+        msg -f "done, but with errors."
+        exit 1
+    else
+        msg -s "done."
+        exit 0
+    fi
 }
 
-ITERM_PREFS=0
-ERRORS=0
+iterm_prefs=0
+errors=0
 
-check_command "stow"
-check_command "realpath"
-DOTFILES_DIR=$(dirname $(realpath $0))
+check_commands "stow" "realpath"
+check_dotfiles_env
 
-PLATFORMS=""
-add_platform "common"
-
+platforms=""
+add_platform "$default_platform"
 uname -r | grep "Microsoft" > /dev/null && add_platform "wsl"
-
 case $(uname) in
-	Darwin) add_platform "macos" ;;
-	Linux) add_platform "linux" ;;
+    Darwin) add_platform "macos" ;;
+    Linux) add_platform "linux" ;;
 esac
 
-create_dir "fish shell functions" ~/.config/fish/functions
-create_dir "fish shell configurations" ~/.config/fish/conf.d
+create_dir "zsh startup scripts" ~/.config/zsh/conf.d
 create_dir "user scripts" ~/.local/bin
 
-for PLATFORM in $PLATFORMS; do
-	cd "$DOTFILES_DIR"/"$PLATFORM"
-	for PKG_DIR in ./*; do
-		PKG_NAME=$(basename $PKG_DIR)
-		link_package $PLATFORM $PKG_NAME
-		if [ "$PKG_NAME" = "iterm" ]; then ITERM_PREFS=1; fi
-	done
+stow_opts='--restow'
+[ "$1" = '--unlink' ] && stow_opts='--delete'
+
+for platform in $platforms; do
+    cd "$DOTFILES"/"$platform"
+    for pkg_dir in ./*; do
+        pkg_name=$(basename $pkg_dir)
+        [ "$pkg_name" = "*" ] && continue # skip platforms with no packages
+        link_package $platform $pkg_name
+        if [ "$pkg_name" = "iterm" ]; then iterm_prefs=1; fi
+    done
 done
 
 check_errors

@@ -1,15 +1,18 @@
 # fish shell universal variable files
+fish_variables
 fishd.*
 
 # vim/netrw history file
 .netrwhist
 
-# vimplug
-common/nvim/.config/nvim/autoload/plug.vim
-common/nvim/.config/nvim/plugged
+# zsh
+all/zsh/.config/zsh/.zcompdump
+all/zsh/.config/zsh/.zhistory
+all/zsh/.config/antibody/bundles.sh
 
-# vifm state information
-common/vifm/.config/vifm/vifminfo
+# vimplug
+all/nvim/.config/nvim/autoload/plug.vim
+all/nvim/.config/nvim/plugged
 
 # macOS files
 .DS_Store
