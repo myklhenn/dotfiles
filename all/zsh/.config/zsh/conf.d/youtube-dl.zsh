@@ -11,5 +11,5 @@ if _zsh_test_cmds 'youtube-dl'; then
     _zsh_add_shortcuts --abbr \
         'ydl          % youtube-dl' \
         'sdl          % soundcloud-dl' \
-        'youtube-mp3  % youtube-dl -x --audio-format "mp3"'
+        'youtube-mp3  % youtube-dl -x --audio-format=mp3'
 fi

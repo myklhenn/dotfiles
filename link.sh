@@ -12,9 +12,9 @@ msg() {
     else
         line_format="[%s] %s\n"
         case "$1" in
-            '-e'|'--error') tput colors > /dev/null \
+            '-e'|'--error') tput colors > /dev/null 2>&1 \
                 && line_format="[\033[0;31mERROR\033[0m] %s\n" ;;
-            '-w'|'--warn')  tput colors > /dev/null \
+            '-w'|'--warn')  tput colors > /dev/null 2>&1 \
                 && line_format="[\033[0;33mWARN\033[0m] %s\n" ;;
         esac
         for str in "${@:2}"; do

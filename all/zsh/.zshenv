@@ -14,6 +14,7 @@ export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 ### ZSH ###
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZCONFDIR="$ZDOTDIR/conf.d"
+export ZABBRS="$ZDOTDIR/abbreviations"
 export HISTFILE="$ZDOTDIR/.zhistory"  # History filepath
 export HISTSIZE=10000                 # Maximum events for internal history
 export SAVEHIST=10000                 # Maximum events in history file
@@ -29,4 +30,4 @@ export LANG='en_US.UTF-8'
 
 ### PATH ###
 export SCRIPTS="$HOME/.local/bin"
-[[ "$PATH" == *"$SCRIPTS"* ]] || export PATH="$PATH:$SCRIPTS"
+echo "$PATH" | grep "$SCRIPTS" > /dev/null || export PATH="$PATH:$SCRIPTS"

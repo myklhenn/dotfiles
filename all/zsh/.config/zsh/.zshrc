@@ -1,7 +1,13 @@
 autoload colors && colors
 
 # load antibody plugins
-source $AB_PLUGIN_FILE
+source "$AB_PLUGIN_FILE"
+
+# load brew package paths on macOS
+[ -d /opt/homebrew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# (abbreviations file will be recreated from config files)
+rm -f "$ZABBRS"
 
 # load config files in "conf.d" directory
 for conf_file in "$ZCONFDIR"/*.zsh; do source $conf_file; done

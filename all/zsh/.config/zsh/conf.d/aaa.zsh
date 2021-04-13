@@ -4,8 +4,8 @@ function _zsh_add_shortcuts() {
     # Load command shortcuts (aliases and/or abbreviations)
     #
     # Usage: ("[+]" indicates arbitrary amount of whitespace)
-    # _zsh_load_shortcut [--abbr] 'ALIAS [+] % EXPANSION'
-    # _zsh_load_abbrs [--abbr] \
+    # _zsh_add_shortcuts [--abbr] 'ALIAS [+] % EXPANSION'
+    # _zsh_add_shortcuts [--abbr] \
     #     'FIRST_ALIAS [+] % EXPANSION' \
     #     'NEXT_ALIAS [+] % EXPANSION' \
     #     ...
@@ -17,8 +17,8 @@ function _zsh_add_shortcuts() {
         # split at "%" to create array "(WORD EXPANSION)"
         local new_sc=(${(s/%/)item})
         alias $new_sc[1]="${new_sc[2]}"
-        if [ "$ADD_ABBR" = '1' ] && [ -z "$(abbr x ${new_sc[1]})" ]; then
-            abbr $new_sc[1]="${new_sc[2]}"
+        if [ "$ADD_ABBR" = '1' ]; then 
+            print "abbr ${new_sc[1]}=\"${new_sc[2]}\"" >> "$ZABBRS"
         fi
     done
 }

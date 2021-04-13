@@ -20,10 +20,10 @@ error() {
 set_line_format() {
     if [ -z "$1" ]; then
         line_format="%s\n"
-        tput colors > /dev/null && line_format="\033[0;${2}m%s\033[0m\n"
+        tput colors > /dev/null 2>&1 && line_format="\033[0;${2}m%s\033[0m\n"
     else
         line_format="[%s] %s\n"
-        tput colors > /dev/null && line_format="[\033[0;${2}m${1}\033[0m] %s\n"
+        tput colors > /dev/null 2>&1 && line_format="[\033[0;${2}m${1}\033[0m] %s\n"
     fi
 }
 
