@@ -7,7 +7,7 @@ source "$AB_PLUGIN_FILE"
 [ -d /opt/homebrew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # (abbreviations file will be recreated from config files)
-rm -f "$ZABBRS"
+cat /dev/null > "$ZABBRS"
 
 # load config files in "conf.d" directory
 for conf_file in "$ZCONFDIR"/*.zsh; do source $conf_file; done
@@ -22,4 +22,5 @@ _zsh_add_shortcuts --abbr \
     'q     % exit'
 
 _zsh_add_shortcuts \
-    'src   % exec zsh'
+    'src   % exec zsh' \
+    'env   % env | sort'
