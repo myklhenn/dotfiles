@@ -1,5 +1,5 @@
 _zsh_test_cmds 'scoop' && _zsh_add_shortcuts --abbr \
-    "su     % scoop update" \
+    "sup    % scoop update" \
     "sua    % scoop update *" \
     "si     % scoop install" \
     "sl     % scoop list" \
@@ -20,15 +20,15 @@ _zsh_test_cmds 'scoop-filter' && _zsh_add_shortcuts --abbr \
     "sfi    % scoop-filter --installed" \
     "sfim   % scoop-filter --installed --multi" \
     "sfm    % scoop-filter --multi" \
-    "sif    % scoop install (scoop-filter)" \
-    "sifm   % scoop install (scoop-filter --multi)" \
-    "suf    % scoop update (scoop-filter --installed)" \
-    "sufm   % scoop update (scoop-filter --installed--multi)" \
-    "suff   % scoop update --force (scoop-filter--installed)" \
-    "suffm  % scoop update --force (scoop-filter--installed --multi)" \
-    "sufmf  % scoop update --force (scoop-filter--installed --multi)" \
-    "sinf   % scoop info (scoop-filter --all)" \
-    "srf    % scoop uninstall (scoop-filter --installed)" \
-    "srfm   % scoop uninstall (scoop-filter --installed--multi)" \
-    "sclf   % scoop cleanup (scoop-filter --installed)" \
-    "sclfm  % scoop cleanup (scoop-filter --installed--multi)"
+    "sif    % scoop install \$(scoop-filter)" \
+    "sifm   % scoop install \$(scoop-filter --multi)" \
+    "suf    % scoop update \$(scoop-filter --installed)" \
+    "sufm   % scoop update \$(scoop-filter --installed --multi)" \
+    "suff   % scoop update --force \$(scoop-filter --installed)" \
+    "suffm  % scoop update --force \$(scoop-filter --installed --multi)" \
+    "sufmf  % scoop update --force \$(scoop-filter --installed --multi)" \
+    "sinf   % scoop info \$(scoop-filter --all)" \
+    "srf    % scoop uninstall \$(scoop-filter --installed)" \
+    "srfm   % scoop uninstall \$(scoop-filter --installed --multi)" \
+    "sclf   % scoop cleanup \$(scoop-filter --installed)" \
+    "sclfm  % scoop cleanup \$(scoop-filter --installed --multi)"

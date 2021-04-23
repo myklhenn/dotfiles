@@ -96,7 +96,7 @@ check_dotfiles_env
 
 platforms=""
 add_platform "$default_platform"
-uname -r | grep "Microsoft" > /dev/null && add_platform "wsl"
+uname -r | grep "microsoft" > /dev/null && add_platform "wsl"
 case $(uname) in
     Darwin) add_platform "macos" ;;
     Linux) add_platform "linux" ;;

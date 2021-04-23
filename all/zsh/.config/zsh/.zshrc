@@ -23,4 +23,4 @@ _zsh_add_shortcuts --abbr \
 
 _zsh_add_shortcuts \
     'src   % exec zsh' \
-    'env   % env | sort'
+    'env   % formatted_env'
