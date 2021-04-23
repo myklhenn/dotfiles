@@ -22,5 +22,6 @@ _zsh_add_shortcuts --abbr \
     'q     % exit'
 
 _zsh_add_shortcuts \
-    'src   % exec zsh' \
-    'env   % formatted_env'
+    'src      % exec zsh' \
+    'env      % formatted_env' \
+    "dotlink  % $DOTFILES/link.sh"
