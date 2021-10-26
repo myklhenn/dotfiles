@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+
+cat "$APP_ICONS_MAP" | while read line
+do
+    # remove whitespace on either side of "%" to create "app_path%icon_name"
+    local line="$(print $line | sed 's/  *% /%/')"
+    # split at "%" to create array "(app_path icon_name)"
+    local icon=(${(s/%/)line})
+    local app_path="${icon[1]}"
+    local icon_name="${icon[2]}"
+    sudo fileicon set "$app_path" "$APP_ICONS_DIR/$icon_name"
+done
+
+# function replace_icons() {
+#   cp ~/.custom-icons/atom.icns /Applications/Atom.app/Contents/Resources/atom.icns
+#   touch /Applications/Atom.app
+#   sudo killall Finder && sudo killall Finder
+# }

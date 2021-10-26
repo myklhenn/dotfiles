@@ -1,0 +1,16 @@
+#!/bin/bash
+
+function get_users() {
+    cat /etc/passwd | awk -F: '{ printf "user \"%s\" has id %s\n", $1, $3 }'
+}
+function get_groups() {
+    cat /etc/group | awk -F: '{ printf "group \"%s\" has id %s\n", $1, $3 }'
+}
+
+NAME="$1"
+[ -z "$NAME" ] && NAME="$(whoami)"
+
+RESULTS="$(printf "%s\n%s" "$(get_users)" "$(get_groups)" | grep "$NAME")"
+[ -z "$RESULTS" ] && exit 1
+
+printf '%s\n' "$RESULTS"
