@@ -4,7 +4,11 @@ if ! _zsh_test_cmds 'antibody'; then
         print 'Please install before next shell startup.'
     else
         print 'Antibody not found. Installing...'
-        curl -sfL git.io/antibody | sh -s - -b $SCRIPTS
+        if _zsh_test_commands 'brew'; then
+            brew install antibody
+        else
+            curl -sfL git.io/antibody | sh -s - -b $SCRIPTS
+        fi
         # generate static plugins file
         antibody bundle < $AB_PLUGIN_LIST > $AB_PLUGIN_FILE
         source $AB_PLUGIN_FILE

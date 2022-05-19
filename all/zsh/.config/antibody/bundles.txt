@@ -8,7 +8,7 @@ ohmyzsh/ohmyzsh path:plugins/fancy-ctrl-z
 olets/zsh-abbr
 
 # fish-like command syntax highlighting
-zdharma/fast-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
 
 # fish-like command autosuggestions
 zsh-users/zsh-autosuggestions

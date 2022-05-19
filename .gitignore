@@ -17,3 +17,6 @@ all/nvim/.config/nvim/plugged
 # macOS files
 .DS_Store
 ._*
+
+# iTerm
+macos/iterm/.config/iterm2/AppSupport

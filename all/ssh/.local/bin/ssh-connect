@@ -6,7 +6,7 @@ check_command() {
     fi
 }
 get_hosts() {
-    cat $HOME/.ssh/config | grep -e "^Host " | awk -F' ' '{print $NF}'
+    cat $HOME/.ssh/config | grep -e "^Host [^\*]" | awk -F' ' '{print $NF}'
 }
 select_host() {
     echo "$1" | fzy --prompt 'Select SSH Host: '
