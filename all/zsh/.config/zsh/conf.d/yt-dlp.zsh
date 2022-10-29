@@ -43,10 +43,10 @@ if _zsh_test_cmds 'yt-dlp'; then
             $@
     }
     _zsh_add_shortcuts --abbr \
-        'sdl          % soundcloud-dl' \
-        'sdli         % soundcloud-dl-img' \
-        'ybm          % ydl-best-mkv' \
-        'ydls         % yt-dlp --list-formats' \
-        'ydt          % yt-dlp --skip-download --write-thumbnail' \
+        'sdl     % soundcloud-dl' \
+        'sdli    % soundcloud-dl-img' \
+        'ybm     % ydl-best-mkv' \
+        'ydls    % yt-dlp --list-formats' \
+        'ydt     % yt-dlp --skip-download --write-thumbnail' \
         'yt-mp3  % yt-dlp -x --audio-format=mp3'
 fi
