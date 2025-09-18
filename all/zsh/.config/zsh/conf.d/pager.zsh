@@ -4,7 +4,7 @@ if ! _zsh_test_cmds bat; then
     print 'until it is installed and the shell is restarted.'
 else
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-    export BAT_THEME="Monokai Pro"
+    export BAT_THEME="Catppuccin Macchiato"
     export BAT_STYLE="numbers,rule,snip"
     _zsh_add_shortcuts "cat  % bat --paging=never"
 fi

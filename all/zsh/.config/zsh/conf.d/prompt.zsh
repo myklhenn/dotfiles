@@ -5,4 +5,6 @@ function _pp() {
 }
 local P_NORMAL="$(_pp '%n' 'blue')@$(_pp '%m' 'magenta') $(_pp '%~' 'green')"
 local P_ERROR="$(_pp '%n@%m %~' 'red')"
-PROMPT=$(printf '%%(?.%s.%s) %%# ' $P_NORMAL $P_ERROR)
+local P_END_COLOR="$([[ -v HISTFILE ]] && printf 'white' || printf 'yellow')"
+local P_END="$(_pp '%%' "$P_END_COLOR")"
+PROMPT=$(printf '%%(?.%s.%s) %s ' $P_NORMAL $P_ERROR $P_END)

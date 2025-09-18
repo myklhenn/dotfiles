@@ -11,6 +11,14 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
 export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
+### PATH ###
+export OPTBIN="/opt/local/bin:/opt/local/sbin"
+echo "$PATH" | grep "$OPTBIN" > /dev/null || export PATH="$OPTBIN:$PATH"
+export SCRIPTS="$HOME/.local/bin"
+echo "$PATH" | grep "$SCRIPTS" > /dev/null || export PATH="$PATH:$SCRIPTS"
+export PYBIN="$HOME/Library/Python/3.9/bin"
+echo "$PATH" | grep "$PYBIN" > /dev/null || export PATH="$PATH:$PYBIN"
+
 ### ZSH ###
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZCONFDIR="$ZDOTDIR/conf.d"
@@ -20,10 +28,20 @@ export HISTFILE="$ZDOTDIR/.zhistory" # History filepath
 export HISTSIZE=10000                # Maximum events for internal history
 export SAVEHIST=10000                # Maximum events in history file
 
+### ANTIDOTE ###
+if [ -d '/opt/homebrew/opt/antidote' ]; then
+    export AD_CMD='/opt/homebrew/opt/antidote/share/antidote/antidote.zsh'
+else
+    export AD_CMD="$HOME/.antidote/antidote.zsh"
+fi
+export AD_CONFIG="$XDG_CONFIG_HOME/antidote"
+export AD_PLUGIN_LIST="$AD_CONFIG/plugins.txt" # List of antidote plugins
+export AD_PLUGIN_FILE="$AD_CONFIG/plugins.sh"  # Static plugins file
+
 ### ANTIBODY ###
-export AB_CONFIG="$XDG_CONFIG_HOME/antibody"
-export AB_PLUGIN_LIST="$AB_CONFIG/bundles.txt" # List of antibody plugins
-export AB_PLUGIN_FILE="$AB_CONFIG/bundles.sh"  # Static plugins file
+# export AB_CONFIG="$XDG_CONFIG_HOME/antibody"
+# export AB_PLUGIN_LIST="$AB_CONFIG/bundles.txt" # List of antibody plugins
+# export AB_PLUGIN_FILE="$AB_CONFIG/bundles.sh"  # Static plugins file
 
 ### LOCALIZATION ###
 export LC_ALL='en_US.UTF-8'
@@ -38,7 +56,3 @@ export LESS_TERMCAP_so="$(print '\e[01;34m')" # standout (blue)
 export LESS_TERMCAP_se="$(print '\e[0m')"     # standout-exit (normal)
 export LESS_TERMCAP_us="$(print '\e[04;93m')" # underline-start (yellow)
 export LESS_TERMCAP_ue="$(print '\e[0m')"     # underline-exit (normal)
-
-### PATH ###
-export SCRIPTS="$HOME/.local/bin"
-echo "$PATH" | grep "$SCRIPTS" > /dev/null || export PATH="$PATH:$SCRIPTS"

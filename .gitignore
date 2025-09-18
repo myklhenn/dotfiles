@@ -9,6 +9,7 @@ fishd.*
 all/zsh/.config/zsh/.zcompdump
 all/zsh/.config/zsh/.zhistory
 all/zsh/.config/antibody/bundles.sh
+all/zsh/.config/antidote/plugins.sh
 
 # vimplug
 all/nvim/.config/nvim/autoload/plug.vim

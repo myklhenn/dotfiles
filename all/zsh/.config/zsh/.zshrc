@@ -1,7 +1,14 @@
 autoload colors && colors
 
+# load antidote and plugins
+source "$AD_CMD"
+zstyle ':antidote:bundle' use-friendly-names on
+zstyle ':antidote:bundle' file "$AD_PLUGIN_LIST"
+zstyle ':antidote:static' file "$AD_PLUGIN_FILE"
+antidote load
+
 # load antibody plugins
-source "$AB_PLUGIN_FILE"
+# source "$AB_PLUGIN_FILE"
 
 # load brew package paths on macOS
 [ -d /opt/homebrew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -22,6 +29,6 @@ _zsh_add_shortcuts --abbr \
     'q     % exit'
 
 _zsh_add_shortcuts \
-    'src      % exec zsh' \
+    "src      % exec $SHELL" \
     'env      % formatted_env' \
     "dotlink  % $DOTFILES/link.sh"

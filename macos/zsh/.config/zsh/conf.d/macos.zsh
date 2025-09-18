@@ -4,7 +4,7 @@ if [ -d "$HOME/Downloads/repositories" ]; then
         function _repo_helper() {
             # choose a repository to pass to command "$1"
             local repo="$(ls -1 $REPO_DIR | fzy --prompt 'Select Repo: ')"
-            [ -n "$repo" ] && $1 "$REPO_DIR/$REPO"
+            [ -n "$repo" ] && $1 "$REPO_DIR/$repo"
         }
         _zsh_add_shortcuts \
             'repo       % _repo_helper "cd"' \
